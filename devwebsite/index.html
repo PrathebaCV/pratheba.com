@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratheba - Where Stories Meet Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff6b35;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ff6b35;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        .main-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 200;
+            letter-spacing: -0.02em;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            margin-bottom: 4rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        .portals-container {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            z-index: 10;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .portal {
+            width: 320px;
+            height: 400px;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .portal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            z-index: -1;
+            transition: all 0.6s ease;
+        }
+
+        .portal:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .portal:hover::before {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+        }
+
+        .portal-en-pakkam {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(255, 107, 53, 0.2) 100%);
+        }
+
+        .portal-en-pakkam::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="rgba(212,175,55,0.1)">௧ ௨ ௩ ௪ ௫</text></svg>') repeat;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        .portal-blog {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+        }
+
+        .portal-portfolio {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .portal-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ff6b35, #d4af37);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .portal-blog .portal-icon {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .portal-portfolio .portal-icon {
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .portal-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portal-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .portal-cta {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .portal-cta:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-top: 4rem;
+        }
+
+        .content-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tamil-content {
+            font-family: 'Noto Sans Tamil', system-ui, sans-serif;
+            line-height: 1.8;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .story-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .story-link:hover {
+            text-decoration: none;
+        }
+
+        .story-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #d4af37;
+        }
+
+        .story-excerpt {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .story-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .blog-posts {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-post {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .portfolio-sections {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .portfolio-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #10b981;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .portals-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .portal {
+                width: 280px;
+                height: 350px;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    
+    <div id="hero" class="hero-section">
+        <div class="floating-particles"></div>
+        
+        <h1 class="main-title">Pratheba</h1>
+        <p class="subtitle">Where Stories Meet Innovation</p>
+        
+        <div class="portals-container">
+            <div class="portal portal-en-pakkam" data-section="en-pakkam">
+                <div class="portal-icon">✍️</div>
+                <h3 class="portal-title">En Pakkam</h3>
+                <p class="portal-description">உள்ளத்தின் உணர்வுகள், கவிதைகள், சிறுகதைகள் - ஒரு வலிமையான தமிழ் பெண்ணின் படைப்புகள்</p>
+                <a href="#" class="portal-cta">தமிழ் படைப்புகள் →</a>
+            </div>
+            
+            <div class="portal portal-blog" data-section="blog">
+                <div class="portal-icon">💭</div>
+                <h3 class="portal-title">Personal Blog</h3>
+                <p class="portal-description">Technical insights, personal reflections, and professional musings crafted with precision and elegance</p>
+                <a href="#" class="portal-cta">Read Articles →</a>
+            </div>
+            
+            <div class="portal portal-portfolio" data-section="portfolio">
+                <div class="portal-icon">🚀</div>
+                <h3 class="portal-title">Portfolio</h3>
+                <p class="portal-description">Professional excellence, technical mastery, and innovative solutions that make an impact</p>
+                <a href="#" class="portal-cta">View Work →</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="en-pakkam" class="content-section tamil-content">
+        <div class="back-button" onclick="showHero()">←</div>
+        <div class="content-header">
+            <h2 class="content-title">என் பக்கம்</h2>
+            <p class="subtitle">என் உள்ளத்தின் குரல், என் கலையின் வெளிப்பாடு</p>
+        </div>
+        
+        <div class="story-grid">
+            <div class="story-card">
+                <a href="posts/sivaratridiaries.html" class="story-link">
+                    <h3 class="story-title">சிவராத்திரியில் என் டைரி குறிப்புகள்</h3>
+                    <p class="story-excerpt">ரொம்ப நாளா என் வலைப்பக்கம் தூங்குது....ஏதோ ஒன்னு எழுதனும்ன்னு நினைச்சு நினைச்சு எல்லாம் பாதியில் தொங்குது....</p>
+                    <p class="story-date">Feb 22, 2020</p>
+                </a>
+            </div>
+            
+            <div class="story-card">
+                <a href="posts/cinema.html" class="story-link">
+                    <h3 class="story-title">சினிமாவும் வக்கிரங்களும்...</h3>
+                    <p class="story-excerpt">பொழுதுபோக்கு அம்சமான சினிமா எவ்வளவு தூரம் நம்மை ஊடுருவியுள்ளது ? - ஒரு பார்வை</p>
+                    <p class="story-date">Feb 29, 2020</p>
+                </a>
+            </div>
+            
+            <div class="story-card">
+                <a href="posts/mayiladuthurai_express.html" class="story-link">
+                    <h3 class="story-title">மயிலாடுதுறை எக்ஸ்பிரஸ்</h3>
+                    <p class="story-excerpt">"மயிலாடுதுறை எக்ஸ்பிரஸ் மாலை 7.05 மணிக்கு கண்டோண்மண்டுக்கு வரும்... நாம 5.30 க்கு கேப் ஏறனும்... ஸோ தேவையான எல்லா விஷயமும் பேக் பண்ணிடு..."</p>
+                    <p class="story-date">Sep 28, 2018</p>
+                </a>
+            </div>
+            
+            <div class="story-card">
+                <a href="posts/anandha-yaazh.html" class="story-link">
+                    <h3 class="story-title">ஆனந்த யாழ்...</h3>
+                    <p class="story-excerpt">அன்பெனும் மழையில் நம்மை அதிகம் நனைய வைப்பது எப்போதுமே பெற்றோர் தான். அவர்கள் அன்பிற்கு நாம் அவர்கள் மீது செலுத்தும் அன்பு என்றும் ஈடாகாது.</p>
+                    <p class="story-date">Feb 08, 2018</p>
+                </a>
+            </div>
+            
+            <div class="story-card">
+                <a href="posts/kaditham.html" class="story-link">
+                    <h3 class="story-title">கடிதம்...</h3>
+                    <p class="story-excerpt">கடிதம்... கொஞ்சம் புன்னகை தா... நிறைய கனவுகள் தா... கைபிடித்து என்னுடன் வா...</p>
+                    <p class="story-date">Oct 30, 2017</p>
+                </a>
+            </div>
+            
+            <div class="story-card">
+                <a href="posts/kanavugal.html" class="story-link">
+                    <h3 class="story-title">கனவுகள்…</h3>
+                    <p class="story-excerpt">விரல் வழி மின்சாரம் வழிகிறது… விண்ணில் ஏவுகணை பாய்கிறது… காரணமெல்லாம் கனவுகள்…</p>
+                    <p class="story-date">Oct 18, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/happy-wedding-day.html" class="story-link">
+                    <h3 class="story-title">மார்க்கண்டேயருக்கு மணநாள்…</h3>
+                    <p class="story-excerpt">அகவை ஐம்பத்திமூன்றாம் அதனை காட்டாது தோற்றம்... வெள்ளிவிழா வந்தது மணவாழ்வில் வெள்ளிநரை எழவில்லை சிகைதன்னில்...</p>
+                    <p class="story-date">Aug 23, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/mazhaikaala-maalai.html" class="story-link">
+                    <h3 class="story-title">மழைக்கால மாலை…</h3>
+                    <p class="story-excerpt">மாலையின் கோப்பை தேநீர் ஒன்றோடு... மனமயங்கிடுவேன் உன்னோடு... உன்னோடிணையும் பயணமது... உயிருக்கிதமான தருணமாம்...</p>
+                    <p class="story-date">Aug 09, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/ezhuthu.html" class="story-link">
+                    <h3 class="story-title">எழுத்து…</h3>
+                    <p class="story-excerpt">எழுத்து என்றும் முடிவதில்லை… சில கணங்களில் நான் எழுதுகிறேன்… பல பொழுதினில் அதுவே என்னை எழுதுகின்றது…</p>
+                    <p class="story-date">Aug 08, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/kanpathu.html" class="story-link">
+                    <h3 class="story-title">காண்பது கண்ணகியோ…</h3>
+                    <p class="story-excerpt">நீண்ட கரிய கூந்தல் கற்றைகள் காற்றில் புறள... அந்திச் சூரியன் தன்பங்கிற்கு அதில் மஞ்சள்பூச...</p>
+                    <p class="story-date">Aug 05, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/thendral.html" class="story-link">
+                    <h3 class="story-title">தென்றல்…</h3>
+                    <p class="story-excerpt">எண்திசை மலர் சேர்ந்த பூந்தோட்டம்… எல்லாம் மணமும் கலந்து வீசுது தென்றலாய்…</p>
+                    <p class="story-date">Aug 03, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/railpayanam.html" class="story-link">
+                    <h3 class="story-title">ரயில்பயண ஞாபகங்கள்…</h3>
+                    <p class="story-excerpt">இப்பதிவு, 2014 செப்டம்பர் மாதம் சென்ற டெல்லி பயணத்தின் சிறுபகுதி… என் பயண அனுபவத்தை நட்புகளுக்கு Whatsapp இல் அனுப்பிவைக்க நெய்யப்பட்டது…</p>
+                    <p class="story-date">Jul 31, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/neyyum.html" class="story-link">
+                    <h3 class="story-title">நீயும் நானும்…</h3>
+                    <p class="story-excerpt">எழுதிட கரையுமென் பென்சில் முனைபோல் உனை நினைத்திட உருகும் நான்… நீண்ட நாட்களாய் நீயாய் இருந்து…</p>
+                    <p class="story-date">Jul 24, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/kaviyozhuthan.html" class="story-link">
+                    <h3 class="story-title">கவியொன்றெழுத எத்தனித்தேன்…</h3>
+                    <p class="story-excerpt">கவியொன்றெழுத எத்தனித்தேன்… கருப்பொருள் பிடிக்க காற்றில் வலைவிரித்தேன்… ஒன்றும் சிக்கவில்லை…</p>
+                    <p class="story-date">Jul 23, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/bengaluru_rain.html" class="story-link">
+                    <h3 class="story-title">பெங்களூரில் ஒரு மழைப்பொழுது…</h3>
+                    <p class="story-excerpt">கம்பிகளுக்குள் நின்று கைநீட்டி கண்களால் மழை அளக்கிறேன்… கம்பத்தில் கண்மறைந்த மாடப்புறா அலகினால் மழை அளக்கிறது என்னுடன்…</p>
+                    <p class="story-date">Apr 17, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/irakkamilla.html" class="story-link">
+                    <h3 class="story-title">இரக்கமில்லா உறக்கம்…</h3>
+                    <p class="story-excerpt">கண்கொட்டாது விழித்திருக்கிறேன்… காரணமேதும் தோன்றவில்லை… கன்றிப்போன கண்ணுக்குள்ளே கனவுகள் வளர்த்து காடுமேடு அலைந்து திரியும் சீருடைக்காரனுக்கு…</p>
+                    <p class="story-date">Mar 18, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/ninaivoru_paravai.html" class="story-link">
+                    <h3 class="story-title">நினைவோ ஒரு பறவை</h3>
+                    <p class="story-excerpt">பின்னிரவில் வரும் பிறைநிலவில்… குளிருக்கென சிறகொடுக்கும் பெண்பறவை…</p>
+                    <p class="story-date">Mar 08, 2017</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/ki_ra_vedhapurathtaar.html" class="story-link">
+                    <h3 class="story-title">கி.ரா வின் வேதபுரத்தார்க்கு…</h3>
+                    <p class="story-excerpt">நீண்ட நாட்களுக்குப்பின் ஒரு புத்தகம்… என் தந்தையின் நண்பர் எங்களுக்கு திருமண பரிசாக அளித்தது…</p>
+                    <p class="story-date">Oct 21, 2016</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/kavithai.html" class="story-link">
+                    <h3 class="story-title">கவிதை</h3>
+                    <p class="story-excerpt">சொல்விதை… சொல் வதை… இரண்டும் கலந்துநான் தமிழ் கொல்வதை நீ …</p>
+                    <p class="story-date">Sep 25, 2016</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/neerkoodu.html" class="story-link">
+                    <h3 class="story-title">நீர்க்கோடு!!!</h3>
+                    <p class="story-excerpt">பொன்னி என்பதொரு பெரும் நீர்க்கோடு அதன் தண்ணி பிரிக்கும் வழக்கோடு சில பல பேரின் ஆணவ செருக்கோடு...</p>
+                    <p class="story-date">Sep 15, 2016</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/idhayathil_oru_paathi.html" class="story-link">
+                    <h3 class="story-title">இதயத்தில் ஒருபாதி இரவல்கொடு…</h3>
+                    <p class="story-excerpt">கவிதைத்தொழில் செய்து வந்தவள்… காதல் துயிலில் விழுகிறேனோ… உண்மையென்று நீயுணர்ந்து கொண்டால்…</p>
+                    <p class="story-date">Aug 20, 2016</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/amma.html" class="story-link">
+                    <h3 class="story-title">அம்மா..!!!</h3>
+                    <p class="story-excerpt">எனக்குள் உருகிக்கொண்டிருக்கும் எதுவோ ஒன்று… இன்று கண்ணீர் வழி வெளிவந்ததோ…</p>
+                    <p class="story-date">Jul 22, 2016</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/nilaave_mugam_kattu.html" class="story-link">
+                    <h3 class="story-title">நிலவே முகம் காட்டு....</h3>
+                    <p class="story-excerpt">வானத்து வெண்ணிலவே… குறைகள் கண்டு பழிக்கும் இவ்வுலகம்…. உன் கறைகள் கண்டு பழிக்குமென்றா முகம் பூட்டினாய்…</p>
+                    <p class="story-date">Jul 02, 2016</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/kavithaigal_mudivadhillai.html" class="story-link">
+                    <h3 class="story-title">கவிதைகள் முடிவதில்லை</h3>
+                    <p class="story-excerpt">மார்கழியின் முன் பனி குளிரில் கைவிரல் நடுக்கத்தின் நடுவே பிடிக்கப்பட்ட பேனா முனையில்...</p>
+                    <p class="story-date">Jul 02, 2016</p>
+                </a>
+            </div>
+
+            <div class="story-card">
+                <a href="posts/thayum_aanavar.html" class="story-link">
+                    <h3 class="story-title">தாயும் ஆனவர்…</h3>
+                    <p class="story-excerpt">நடைபயில கற்றுத்தந்தாய் நீ எனக்கு… என்னுள்ளே தமிழுக்கும் – அதனால்… என் நடையில் உன் சாயல்…</p>
+                    <p class="story-date">Apr 05, 2016</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="blog" class="content-section">
+        <div class="back-button" onclick="showHero()">←</div>
+        <div class="content-header">
+            <h2 class="content-title">Personal Blog</h2>
+            <p class="subtitle">Technical insights and personal reflections</p>
+        </div>
+        
+        <div class="blog-posts">
+            <div class="blog-post">
+                <h3 class="story-title">The Art of Clean Code Architecture</h3>
+                <p class="story-excerpt">Exploring advanced patterns in software design that create maintainable, scalable, and elegant solutions. A deep dive into SOLID principles and their practical applications.</p>
+                <p class="story-date">Coming Soon</p>
+            </div>
+            
+            <div class="blog-post">
+                <h3 class="story-title">Bridging Cultures Through Technology</h3>
+                <p class="story-excerpt">How technology serves as a universal language while preserving cultural identity. Reflections on building inclusive digital experiences.</p>
+                <p class="story-date">Coming Soon</p>
+            </div>
+            
+            <div class="blog-post">
+                <h3 class="story-title">The Philosophy of User Experience</h3>
+                <p class="story-excerpt">Beyond interfaces and interactions - exploring the psychological and emotional aspects of digital product design.</p>
+                <p class="story-date">Coming Soon</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="portfolio" class="content-section">
+        <div class="back-button" onclick="showHero()">←</div>
+        <div class="content-header">
+            <h2 class="content-title">Portfolio & Resume</h2>
+            <p class="subtitle">Technical excellence meets creative innovation</p>
+        </div>
+        
+        <div class="portfolio-sections">
+            <div class="portfolio-section">
+                <h3 class="section-title">Technical Expertise</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">Full-Stack Development</div>
+                    <div class="skill-item">React & Node.js</div>
+                    <div class="skill-item">Python & Django</div>
+                    <div class="skill-item">Cloud Architecture</div>
+                    <div class="skill-item">Database Design</div>
+                    <div class="skill-item">DevOps & CI/CD</div>
+                    <div class="skill-item">UI/UX Design</div>
+                    <div class="skill-item">API Development</div>
+                </div>
+            </div>
+            
+            <div class="portfolio-section">
+                <h3 class="section-title">Professional Experience</h3>
+                <div class="blog-post">
+                    <h4 class="story-title">Senior Software Engineer</h4>
+                    <p class="story-excerpt">Led development of scalable web applications serving 100K+ users. Architected microservices infrastructure reducing system latency by 40%. Mentored junior developers and established best practices.</p>
+                    <p class="story-date">2020 - Present</p>
+                </div>
+                
+                <div class="blog-post">
+                    <h4 class="story-title">Full-Stack Developer</h4>
+                    <p class="story-excerpt">Built responsive web applications using modern JavaScript frameworks. Collaborated with cross-functional teams to deliver high-quality software solutions on time and within budget.</p>
+                    <p class="story-date">2018 - 2020</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-section">
+                <h3 class="section-title">Key Projects</h3>
+                <div class="story-grid">
+                    <div class="story-card">
+                        <h4 class="story-title">E-Commerce Platform</h4>
+                        <p class="story-excerpt">Built a complete e-commerce solution with React, Node.js, and MongoDB. Features include real-time inventory, payment processing, and analytics dashboard.</p>
+                    </div>
+                    
+                    <div class="story-card">
+                        <h4 class="story-title">Data Visualization Dashboard</h4>
+                        <p class="story-excerpt">Created interactive dashboards using D3.js and Python, processing millions of data points to provide actionable business insights.</p>
+                    </div>
+                    
+                    <div class="story-card">
+                        <h4 class="story-title">Mobile App Development</h4>
+                        <p class="story-excerpt">Developed cross-platform mobile applications using React Native, serving 50K+ active users with 4.8-star rating.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Floating particles
+        function createParticles() {
+            const container = document.querySelector('.floating-particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Portal navigation
+        document.querySelectorAll('.portal').forEach(portal => {
+            portal.addEventListener('click', () => {
+                const section = portal.dataset.section;
+                showSection(section);
+            });
+        });
+
+        function showSection(sectionId) {
+            document.getElementById('hero').style.display = 'none';
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            // Store the current section in session storage
+            sessionStorage.setItem('activeSection', sectionId);
+        }
+
+        function showHero() {
+            document.getElementById('hero').style.display = 'flex';
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+
+        // Smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            
+            // Check if we should show a specific section
+            const activeSection = sessionStorage.getItem('activeSection');
+            if (activeSection) {
+                showSection(activeSection);
+                sessionStorage.removeItem('activeSection'); // Clear it after use
+            }
+            
+            // Animate elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.portal, .story-card, .blog-post').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            document.querySelector('.floating-particles').style.transform = `translateY(${rate}px)`;
+        });
+
+        // Portal hover effects
+        document.querySelectorAll('.portal').forEach(portal => {
+            portal.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.borderWidth = '3px';
+            });
+            
+            portal.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.borderWidth = '2px';
+            });
+        });
+    </script>
+</body>
+</html>

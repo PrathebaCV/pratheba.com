@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>கனவுகள்… - Pratheba</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Tamil', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            padding: 2rem;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #d4af37;
+        }
+
+        .post-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .post-content {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .post-content blockquote {
+            border-left: 4px solid #d4af37;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 2rem;
+                margin: 2rem 1rem;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-button" onclick="window.location.href='../index.html'; setTimeout(() => document.getElementById('en-pakkam').classList.add('active'), 100); return false;">←</a>
+    
+    <article class="post-container">
+        <h1 class="post-title">கனவுகள்…</h1>
+        <p class="post-date">October 18, 2017</p>
+        <div class="post-content">
+            <p>கனவுகள்…</p>
+<p>விரல் வழி மின்சாரம் வழிகிறது…
+விண்ணில் ஏவுகணை பாய்கிறது…
+காரணமெல்லாம் கனவுகள்…</p>
+<p>குளிர் போக குகை கண்டதும்…
+அதுபோக புகை கண்டதும்…
+யாரோ ஒருவன் கனவுகள்…</p>
+<p>காடு வழி நடந்தவனை காரில் ஏற்றியதும்…
+கரியமிலம் பெருக்கி நெரிசல் வளர்த்த்தும்…
+இன்னொருவன் கனவுகள்…</p>
+<p>தொலைதூரம் சுருக்க இணையம் வளர்த்ததும்…
+சிட்டுக்குருவிகள் செத்துப்போக
+செல்போன் கோபுரம் அமைத்ததும்…
+வேறொருவன் கனவுகள்…</p>
+<p>என்திறமெல்லாம் கொட்டி எந்திரம் படைக்கிறேன்…
+என்றோ எனையாள செங்கோல் எடுக்குமென்றறியாமல்…</p>
+<p>விண்மீன் பறிக்க ஏவுகணை தொடுக்கிறோம்…
+வானம்தொட பாலம் அமைக்கிறோம்…
+மனப்பாலங்கள் புணரமைப்பை யாசிக்கின்றன…
+கொஞ்சம் யோசிப்போம்…..</p>
+        </div>
+    </article>
+</body>
+</html>
