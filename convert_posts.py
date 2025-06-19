@@ -24,7 +24,8 @@ def process_markdown_files():
             date = convert_date(post['date'])
             
             # Create HTML file
-            output_filename = os.path.splitext(filename)[0].split('-', 3)[-1] + '.html'
+            # Remove the date prefix and keep the rest of the filename
+            output_filename = filename[11:].rsplit('.', 1)[0] + '.html'
             html = template.replace('{{title}}', post['title'])
             html = html.replace('{{date}}', date)
             html = html.replace('{{content}}', html_content)
