@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>வாசகர் கருத்துக்கள் - இந்திர நீலமும் இமைக்கா இரவுகளும்</title>
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-card: rgba(31, 41, 55, 0.7);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans Tamil', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            line-height: 1.5;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-description {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .review-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .review-preview {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .review-author {
+            color: var(--accent-color);
+            font-size: 1rem;
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .review-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <a href="../index.html" class="back-button">←</a>
+
+        <div class="content-header">
+            <h1 class="content-title">இந்திர நீலமும் இமைக்கா இரவுகளும்</h1>
+            <p class="content-subtitle">வாசகர்களின் கருத்துக்கள்</p>
+        </div>
+
+        <div class="reviews-grid">
+            <a href="review-1.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #1</div>
+                <div class="review-preview">புத்தகத்தின் ஆசிரியரான எனது தோழிக்கு முதலில் என் பாராட்டும், வாழ்த்துக்களும்... முதல் பக்கத்தில் இருந்து, கடைசி பக்கம் வரை கதையில் திருப்பங்களும், சுவாரஸ்யமும் இருந்தது.</div>
+                <div class="review-author">Preethi Rajkumar</div>
+            </a>
+
+            <a href="review-2.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #2</div>
+                <div class="review-preview">கதை கற்பனை என்று சொன்னது ஏத்துக்க முடியவில்லை உண்மையான சம்பவங்களை நேரில் பார்த்தது போல் இருக்கிறது.</div>
+            </a>
+
+            <a href="review-3.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #3</div>
+                <div class="review-preview">மணிமேகலை, பூம்புகார், காதல், வரலாறு என்று புத்தகத்தை பற்றி நிறைய கருத்துக்கள் வந்து விட்டது.</div>
+            </a>
+
+            <a href="review-4.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #4</div>
+                <div class="review-preview">வரலாறு, புவியியல் என்று தொடங்கி அண்டம், ஆழ்கடலில் இறங்கி, சித்தர்கள் வரை அனைத்தையுமே விரிவாக புரியும் படி கதை எடுத்துரைத்தது மிகவும் சிறப்பு.</div>
+            </a>
+
+            <a href="review-5.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #5</div>
+                <div class="review-preview">படங்களும் காட்சிக்கு மேலும் அழகு சேர்த்தது. கதையின் திருப்பங்கள் எதிர்பாராத விதமாக இருந்தன.</div>
+            </a>
+
+            <a href="review-6.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #6</div>
+                <div class="review-preview">எழுத்து நடை மிகவும் கவர்ந்தது. கதையின் ஓட்டம் ஒரு நொடி கூட தடைபடாமல் தொடர்ந்தது.</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
