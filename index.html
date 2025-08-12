@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0a0a0a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Pratheba - Where Stories Meet Innovation</title>
+    <title>Pratheba - எழுத்தும் புதுமைகளும்</title>
     <style>
         :root {
             --primary-color: #4f46e5;
@@ -180,6 +180,19 @@
 
         .portal-portfolio {
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+        }
+
+        .portal-books {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+        }
+
+        .portal-books .portal-cta {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .portal-books:hover .portal-cta {
+            background: rgba(139, 92, 246, 0.2);
         }
 
         @keyframes rotate {
@@ -393,6 +406,56 @@
             gap: 1rem;
         }
 
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .review-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .review-preview {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .review-author {
+            color: var(--accent-color);
+            font-size: 1rem;
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+
         .skill-item {
             background: rgba(255, 255, 255, 0.05);
             padding: 1rem;
@@ -485,13 +548,13 @@
     <div id="hero" class="hero-section">
         <div class="floating-particles"></div>
         
-        <h1 class="main-title">Pratheba</h1>
-        <p class="subtitle">Where Stories Meet Innovation</p>
+        <h1 class="main-title">Pratheba.com</h1>
+        <p class="subtitle">எழுத்தும் புதுமைகளும்</p>
         
         <div class="portals-container">
             <div class="portal portal-en-pakkam" data-section="en-pakkam">
                 <div class="portal-icon">✍️</div>
-                <h3 class="portal-title">En Pakkam</h3>
+                <h3 class="portal-title">என் பக்கம்</h3>
                 <p class="portal-description">உள்ளத்தின் உணர்வுகள், கவிதைகள், சிறுகதைகள் - ஒரு வலிமையான தமிழ் பெண்ணின் படைப்புகள்</p>
                 <a href="#" class="portal-cta">தமிழ் படைப்புகள் →</a>
             </div>
@@ -509,6 +572,13 @@
                 <p class="portal-description">Professional excellence, technical mastery, and innovative solutions that make an impact</p>
                 <a href="#" class="portal-cta">View Work →</a>
             </div>
+
+            <div class="portal portal-books" data-section="books">
+                <div class="portal-icon">📚</div>
+                <h3 class="portal-title">வாசகர் பக்கம்</h3>
+                <p class="portal-description">என் எழுத்துக்களும் வாசகர்களின் கருத்துக்களும்</p>
+                <a href="book_reviews/index.html" class="portal-cta">வாசகர் கருத்துக்கள் →</a>
+            </div>
         </div>
     </div>
 
@@ -516,7 +586,7 @@
         <div class="back-button" onclick="showHero()">←</div>
         <div class="content-header">
             <h2 class="content-title">என் பக்கம்</h2>
-            <p class="subtitle">என் உள்ளத்தின் குரல், என் கலையின் வெளிப்பாடு</p>
+            <p class="subtitle">என் உள்ளத்தின் குரல்</p>
         </div>
         
         <div class="story-grid">
@@ -800,6 +870,52 @@
             </div>
         </div>
     </div>
+
+    <div id="books" class="content-section">
+        <div class="back-button" onclick="showHero()">←</div>
+        <div class="content-header">
+            <h2 class="content-title">இந்திர நீலமும் இமைக்கா இரவுகளும்</h2>
+            <p class="subtitle">வாசகர்களின் கருத்துக்கள்</p>
+        </div>
+        
+        <div class="reviews-grid">
+            <a href="book_reviews/review-1.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #1</div>
+                <div class="review-preview">புத்தகத்தின் ஆசிரியரான எனது தோழிக்கு முதலில் என் பாராட்டும், வாழ்த்துக்களும்... முதல் பக்கத்தில் இருந்து, கடைசி பக்கம் வரை கதையில் திருப்பங்களும், சுவாரஸ்யமும் இருந்தது.</div>
+                <div class="review-author">Preethi Rajkumar</div>
+            </a>
+
+            <a href="book_reviews/review-2.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #2</div>
+                <div class="review-preview">கதை கற்பனை என்று சொன்னது ஏத்துக்க முடியவில்லை உண்மையான சம்பவங்களை நேரில் பார்த்தது போல் இருக்கிறது.</div>
+            </a>
+
+            <a href="book_reviews/review-3.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #3</div>
+                <div class="review-preview">மணிமேகலை, பூம்புகார், காதல், வரலாறு என்று புத்தகத்தை பற்றி நிறைய கருத்துக்கள் வந்து விட்டது.</div>
+            </a>
+
+            <a href="book_reviews/review-4.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #4</div>
+                <div class="review-preview">வரலாறு, புவியியல் என்று தொடங்கி அண்டம், ஆழ்கடலில் இறங்கி, சித்தர்கள் வரை அனைத்தையுமே விரிவாக புரியும் படி கதை எடுத்துரைத்தது மிகவும் சிறப்பு.</div>
+            </a>
+
+            <a href="book_reviews/review-5.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #5</div>
+                <div class="review-preview">படங்களும் காட்சிக்கு மேலும் அழகு சேர்த்தது. கதையின் திருப்பங்கள் எதிர்பாராத விதமாக இருந்தன.</div>
+            </a>
+
+            <a href="book_reviews/review-6.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #6</div>
+                <div class="review-preview">எழுத்து நடை மிகவும் கவர்ந்தது. கதையின் ஓட்டம் ஒரு நொடி கூட தடைபடாமல் தொடர்ந்தது.</div>
+            </a>
+
+            <a href="book_reviews/review-7.html" class="review-card">
+                <div class="review-number">வாசகர் கருத்து #7</div>
+                <div class="review-preview">வித்தியாசமான ஒரு புதிய முயற்சி. வாசிக்கத் துவங்கினால் கீழே வைக்க முடியாமல் சரசரவென நகர்கிறது கதை.</div>
+                <div class="review-author">ச.தமிழ்ச்செல்வன்</div>
+            </a>
+        </div>
 
     <script>
         // Floating particles
