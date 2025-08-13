@@ -2,11 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Pratheba's personal website featuring Tamil literature, poetry, and technical blog">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Pratheba - எழுத்தும் புதுமைகளும்</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="floating-menu.js"></script>
     <style>
         :root {
             --primary-color: #4f46e5;
@@ -18,6 +24,181 @@
             --bg-secondary: #1f2937;
             --bg-card: rgba(31, 41, 55, 0.7);
             --transition: all 0.3s ease;
+            --nav-height: 64px;
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            height: var(--nav-height);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* Layout Container */
+        .layout-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            margin-top: var(--nav-height);
+            min-height: calc(100vh - var(--nav-height));
+        }
+
+        /* Author Sidebar */
+        .author-sidebar {
+            position: sticky;
+            top: calc(var(--nav-height) + 2rem);
+            height: fit-content;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .author-info {
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+                background: none;
+                border: none;
+                padding: 0.5rem;
+                cursor: pointer;
+            }
+
+            .hamburger {
+                display: block;
+                width: 24px;
+                height: 2px;
+                background: var(--text-primary);
+                position: relative;
+                transition: var(--transition);
+            }
+
+            .hamburger::before,
+            .hamburger::after {
+                content: '';
+                position: absolute;
+                width: 24px;
+                height: 2px;
+                background: var(--text-primary);
+                transition: var(--transition);
+            }
+
+            .hamburger::before {
+                top: -8px;
+            }
+
+            .hamburger::after {
+                bottom: -8px;
+            }
+
+            .nav-toggle.active .hamburger {
+                background: transparent;
+            }
+
+            .nav-toggle.active .hamburger::before {
+                transform: rotate(45deg);
+                top: 0;
+            }
+
+            .nav-toggle.active .hamburger::after {
+                transform: rotate(-45deg);
+                bottom: 0;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                display: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .layout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .author-sidebar {
+                position: static;
+                margin: 1rem;
+            }
         }
 
         * {
@@ -263,14 +444,59 @@
         }
 
         .content-section {
-            display: none;
+            opacity: 0;
+            visibility: hidden;
             min-height: 100vh;
             padding: 2rem;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            pointer-events: none;
         }
 
         .content-section.active {
-            display: block;
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+            pointer-events: all;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .loading.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loading::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         .back-button {
@@ -370,7 +596,7 @@
             font-size: 0.9rem;
         }
 
-        .blog-posts {
+        .blog-en_pakkam {
             max-width: 800px;
             margin: 0 auto;
         }
@@ -464,6 +690,24 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Hover effects only on devices that support hover */
+        @media (hover: hover) {
+            .portal:hover {
+                transform: translateY(-20px) scale(1.05);
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            }
+
+            .portal-cta:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+            }
+
+            .story-card:hover {
+                transform: translateY(-5px);
+                background: rgba(255, 255, 255, 0.08);
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 4rem 1rem 2rem;
@@ -476,12 +720,22 @@
             
             .portal {
                 min-height: 380px;
-                padding: 1.5rem;
+                padding: 2rem;
             }
             
-            .portal:hover {
-                transform: none;
-                box-shadow: none;
+            .nav-menu a {
+                padding: 1rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .portal-cta {
+                padding: 1rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             
             .story-grid {
@@ -526,7 +780,7 @@
                 margin: 0 1rem 1rem;
             }
 
-            .blog-posts {
+            .blog-en_pakkam {
                 padding: 0 1rem;
             }
 
@@ -545,39 +799,57 @@
     </style>
 </head>
 <body>
-    <div id="hero" class="hero-section">
-        <div class="floating-particles"></div>
-        
-        <h1 class="main-title">Pratheba.com</h1>
-        <p class="subtitle">எழுத்தும் புதுமைகளும்</p>
+    <div class="loading"></div>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/index.html" class="nav-brand">Pratheba.com</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <div class="nav-menu">
+                <a href="#en-pakkam" data-section="en-pakkam">என் பக்கம்</a>
+                <a href="#blog" data-section="blog">Blog</a>
+                <a href="#portfolio" data-section="portfolio">Portfolio</a>
+                <a href="book_reviews/index.html">வாசகர் பக்கம்</a>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <main>
+            <div id="hero" class="hero-section">
+                <div class="floating-particles"></div>
+                
+                <h1 class="main-title">Pratheba.com</h1>
+                <p class="subtitle">எழுத்தும் புதுமைகளும்</p>
         
         <div class="portals-container">
             <div class="portal portal-en-pakkam" data-section="en-pakkam">
                 <div class="portal-icon">✍️</div>
                 <h3 class="portal-title">என் பக்கம்</h3>
-                <p class="portal-description">உள்ளத்தின் உணர்வுகள், கவிதைகள், சிறுகதைகள் - ஒரு வலிமையான தமிழ் பெண்ணின் படைப்புகள்</p>
-                <a href="#" class="portal-cta">தமிழ் படைப்புகள் →</a>
+                <p class="portal-description">உள்ளத்தின் உணர்வுகள், கவிதைகள், சிறுகதைகள்</p>
+                <a href="en_pakkam/index.html" class="portal-cta">தமிழ் படைப்புகள்</a>
             </div>
             
             <div class="portal portal-blog" data-section="blog">
                 <div class="portal-icon">💭</div>
                 <h3 class="portal-title">Personal Blog</h3>
                 <p class="portal-description">Technical insights, personal reflections, and professional musings crafted with precision and elegance</p>
-                <a href="#" class="portal-cta">Read Articles →</a>
+                <a href="#" class="portal-cta" onclick="alert('Blog section coming soon!'); return false;">Read Articles →</a>
             </div>
             
             <div class="portal portal-portfolio" data-section="portfolio">
                 <div class="portal-icon">🚀</div>
                 <h3 class="portal-title">Portfolio</h3>
                 <p class="portal-description">Professional excellence, technical mastery, and innovative solutions that make an impact</p>
-                <a href="#" class="portal-cta">View Work →</a>
+                <a href="about-me.html" class="portal-cta"> VIEW </a>
             </div>
 
-            <div class="portal portal-books" data-section="books">
+            <div class="portal portal-books">
                 <div class="portal-icon">📚</div>
                 <h3 class="portal-title">வாசகர் பக்கம்</h3>
                 <p class="portal-description">என் எழுத்துக்களும் வாசகர்களின் கருத்துக்களும்</p>
-                <a href="book_reviews/index.html" class="portal-cta">வாசகர் கருத்துக்கள் →</a>
+                <a href="book_reviews/index.html" class="portal-cta">வாசகர் கருத்துக்கள்</a>
             </div>
         </div>
     </div>
@@ -591,7 +863,7 @@
         
         <div class="story-grid">
             <div class="story-card">
-                <a href="posts/sivaratridiaries.html" class="story-link">
+                <a href="en_pakkam/sivaratridiaries.html" class="story-link">
                     <h3 class="story-title">சிவராத்திரியில் என் டைரி குறிப்புகள்</h3>
                     <p class="story-excerpt">ரொம்ப நாளா என் வலைப்பக்கம் தூங்குது....ஏதோ ஒன்னு எழுதனும்ன்னு நினைச்சு நினைச்சு எல்லாம் பாதியில் தொங்குது....</p>
                     <p class="story-date">Feb 22, 2020</p>
@@ -599,7 +871,7 @@
             </div>
             
             <div class="story-card">
-                <a href="posts/cinema.html" class="story-link">
+                <a href="en_pakkam/cinema.html" class="story-link">
                     <h3 class="story-title">சினிமாவும் வக்கிரங்களும்...</h3>
                     <p class="story-excerpt">பொழுதுபோக்கு அம்சமான சினிமா எவ்வளவு தூரம் நம்மை ஊடுருவியுள்ளது ? - ஒரு பார்வை</p>
                     <p class="story-date">Feb 29, 2020</p>
@@ -607,7 +879,7 @@
             </div>
             
             <div class="story-card">
-                <a href="posts/mayiladuthurai_express.html" class="story-link">
+                <a href="en_pakkam/mayiladuthurai_express.html" class="story-link">
                     <h3 class="story-title">மயிலாடுதுறை எக்ஸ்பிரஸ்</h3>
                     <p class="story-excerpt">"மயிலாடுதுறை எக்ஸ்பிரஸ் மாலை 7.05 மணிக்கு கண்டோண்மண்டுக்கு வரும்... நாம 5.30 க்கு கேப் ஏறனும்... ஸோ தேவையான எல்லா விஷயமும் பேக் பண்ணிடு..."</p>
                     <p class="story-date">Sep 28, 2018</p>
@@ -615,7 +887,7 @@
             </div>
             
             <div class="story-card">
-                <a href="posts/anandha-yaazh.html" class="story-link">
+                <a href="en_pakkam/anandha-yaazh.html" class="story-link">
                     <h3 class="story-title">ஆனந்த யாழ்...</h3>
                     <p class="story-excerpt">அன்பெனும் மழையில் நம்மை அதிகம் நனைய வைப்பது எப்போதுமே பெற்றோர் தான். அவர்கள் அன்பிற்கு நாம் அவர்கள் மீது செலுத்தும் அன்பு என்றும் ஈடாகாது.</p>
                     <p class="story-date">Feb 08, 2018</p>
@@ -623,7 +895,7 @@
             </div>
             
             <div class="story-card">
-                <a href="posts/kaditham.html" class="story-link">
+                <a href="en_pakkam/kaditham.html" class="story-link">
                     <h3 class="story-title">கடிதம்...</h3>
                     <p class="story-excerpt">கடிதம்... கொஞ்சம் புன்னகை தா... நிறைய கனவுகள் தா... கைபிடித்து என்னுடன் வா...</p>
                     <p class="story-date">Oct 30, 2017</p>
@@ -631,7 +903,7 @@
             </div>
             
             <div class="story-card">
-                <a href="posts/kanavugal.html" class="story-link">
+                <a href="en_pakkam/kanavugal.html" class="story-link">
                     <h3 class="story-title">கனவுகள்…</h3>
                     <p class="story-excerpt">விரல் வழி மின்சாரம் வழிகிறது… விண்ணில் ஏவுகணை பாய்கிறது… காரணமெல்லாம் கனவுகள்…</p>
                     <p class="story-date">Oct 18, 2017</p>
@@ -639,7 +911,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/happy-wedding-day.html" class="story-link">
+                <a href="en_pakkam/happy-wedding-day.html" class="story-link">
                     <h3 class="story-title">மார்க்கண்டேயருக்கு மணநாள்…</h3>
                     <p class="story-excerpt">அகவை ஐம்பத்திமூன்றாம் அதனை காட்டாது தோற்றம்... வெள்ளிவிழா வந்தது மணவாழ்வில் வெள்ளிநரை எழவில்லை சிகைதன்னில்...</p>
                     <p class="story-date">Aug 23, 2017</p>
@@ -647,7 +919,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/mazhaikaala-maalai.html" class="story-link">
+                <a href="en_pakkam/mazhaikaala-maalai.html" class="story-link">
                     <h3 class="story-title">மழைக்கால மாலை…</h3>
                     <p class="story-excerpt">மாலையின் கோப்பை தேநீர் ஒன்றோடு... மனமயங்கிடுவேன் உன்னோடு... உன்னோடிணையும் பயணமது... உயிருக்கிதமான தருணமாம்...</p>
                     <p class="story-date">Aug 09, 2017</p>
@@ -655,7 +927,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/eluthu.html" class="story-link">
+                <a href="en_pakkam/eluthu.html" class="story-link">
                     <h3 class="story-title">எழுத்து…</h3>
                     <p class="story-excerpt">எழுத்து என்றும் முடிவதில்லை… சில கணங்களில் நான் எழுதுகிறேன்… பல பொழுதினில் அதுவே என்னை எழுதுகின்றது…</p>
                     <p class="story-date">Aug 08, 2017</p>
@@ -663,7 +935,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/kannagi.html" class="story-link">
+                <a href="en_pakkam/kannagi.html" class="story-link">
                     <h3 class="story-title">காண்பது கண்ணகியோ…</h3>
                     <p class="story-excerpt">நீண்ட கரிய கூந்தல் கற்றைகள் காற்றில் புறள... அந்திச் சூரியன் தன்பங்கிற்கு அதில் மஞ்சள்பூச...</p>
                     <p class="story-date">Aug 05, 2017</p>
@@ -671,7 +943,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/thendral-illam.html" class="story-link">
+                <a href="en_pakkam/thendral-illam.html" class="story-link">
                     <h3 class="story-title">தென்றல்…</h3>
                     <p class="story-excerpt">எண்திசை மலர் சேர்ந்த பூந்தோட்டம்… எல்லாம் மணமும் கலந்து வீசுது தென்றலாய்…</p>
                     <p class="story-date">Aug 03, 2017</p>
@@ -679,7 +951,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/rayil_payanam.html" class="story-link">
+                <a href="en_pakkam/rayil_payanam.html" class="story-link">
                     <h3 class="story-title">ரயில்பயண ஞாபகங்கள்…</h3>
                     <p class="story-excerpt">இப்பதிவு, 2014 செப்டம்பர் மாதம் சென்ற டெல்லி பயணத்தின் சிறுபகுதி… என் பயண அனுபவத்தை நட்புகளுக்கு Whatsapp இல் அனுப்பிவைக்க நெய்யப்பட்டது…</p>
                     <p class="story-date">Jul 31, 2017</p>
@@ -687,7 +959,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/neeyum-naanum.html" class="story-link">
+                <a href="en_pakkam/neeyum-naanum.html" class="story-link">
                     <h3 class="story-title">நீயும் நானும்…</h3>
                     <p class="story-excerpt">எழுதிட கரையுமென் பென்சில் முனைபோல் உனை நினைத்திட உருகும் நான்… நீண்ட நாட்களாய் நீயாய் இருந்து…</p>
                     <p class="story-date">Jul 24, 2017</p>
@@ -695,7 +967,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/kaviyondru_elutha.html" class="story-link">
+                <a href="en_pakkam/kaviyondru_elutha.html" class="story-link">
                     <h3 class="story-title">கவியொன்றெழுத எத்தனித்தேன்…</h3>
                     <p class="story-excerpt">கவியொன்றெழுத எத்தனித்தேன்… கருப்பொருள் பிடிக்க காற்றில் வலைவிரித்தேன்… ஒன்றும் சிக்கவில்லை…</p>
                     <p class="story-date">Jul 23, 2017</p>
@@ -703,7 +975,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/mazhai_kaalam_2.html" class="story-link">
+                <a href="en_pakkam/mazhai_kaalam_2.html" class="story-link">
                     <h3 class="story-title">பெங்களூரில் ஒரு மழைப்பொழுது…</h3>
                     <p class="story-excerpt">கம்பிகளுக்குள் நின்று கைநீட்டி கண்களால் மழை அளக்கிறேன்… கம்பத்தில் கண்மறைந்த மாடப்புறா அலகினால் மழை அளக்கிறது என்னுடன்…</p>
                     <p class="story-date">Apr 17, 2017</p>
@@ -711,7 +983,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/irakkamillaa_urakkam.html" class="story-link">
+                <a href="en_pakkam/irakkamillaa_urakkam.html" class="story-link">
                     <h3 class="story-title">இரக்கமில்லா உறக்கம்…</h3>
                     <p class="story-excerpt">கண்கொட்டாது விழித்திருக்கிறேன்… காரணமேதும் தோன்றவில்லை… கன்றிப்போன கண்ணுக்குள்ளே கனவுகள் வளர்த்து காடுமேடு அலைந்து திரியும் சீருடைக்காரனுக்கு…</p>
                     <p class="story-date">Mar 18, 2017</p>
@@ -719,7 +991,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/ninaivo-oru-paravai.html" class="story-link">
+                <a href="en_pakkam/ninaivo-oru-paravai.html" class="story-link">
                     <h3 class="story-title">நினைவோ ஒரு பறவை</h3>
                     <p class="story-excerpt">பின்னிரவில் வரும் பிறைநிலவில்… குளிருக்கென சிறகொடுக்கும் பெண்பறவை…</p>
                     <p class="story-date">Mar 08, 2017</p>
@@ -727,7 +999,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/ki-raa-vin-vedhapuraththaarkku.html" class="story-link">
+                <a href="en_pakkam/ki-raa-vin-vedhapuraththaarkku.html" class="story-link">
                     <h3 class="story-title">கி.ரா வின் வேதபுரத்தார்க்கு…</h3>
                     <p class="story-excerpt">நீண்ட நாட்களுக்குப்பின் ஒரு புத்தகம்… என் தந்தையின் நண்பர் எங்களுக்கு திருமண பரிசாக அளித்தது…</p>
                     <p class="story-date">Oct 21, 2016</p>
@@ -735,7 +1007,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/en_magizhchi.html" class="story-link">
+                <a href="en_pakkam/en_magizhchi.html" class="story-link">
                     <h3 class="story-title">கவிதை</h3>
                     <p class="story-excerpt">சொல்விதை… சொல் வதை… இரண்டும் கலந்துநான் தமிழ் கொல்வதை நீ …</p>
                     <p class="story-date">Sep 25, 2016</p>
@@ -743,7 +1015,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/neerkkodu.html" class="story-link">
+                <a href="en_pakkam/neerkkodu.html" class="story-link">
                     <h3 class="story-title">நீர்க்கோடு!!!</h3>
                     <p class="story-excerpt">பொன்னி என்பதொரு பெரும் நீர்க்கோடு அதன் தண்ணி பிரிக்கும் வழக்கோடு சில பல பேரின் ஆணவ செருக்கோடு...</p>
                     <p class="story-date">Sep 15, 2016</p>
@@ -751,7 +1023,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/thayumanavar.html" class="story-link">
+                <a href="en_pakkam/thayumanavar.html" class="story-link">
                     <h3 class="story-title">தாயும் ஆனவர்…</h3>
                     <p class="story-excerpt">நடைபயில கற்றுத்தந்தாய் நீ எனக்கு… என்னுள்ளே தமிழுக்கும் – அதனால்… என் நடையில் உன் சாயல்…</p>
                     <p class="story-date">Apr 05, 2016</p>
@@ -759,7 +1031,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/idhayathil-orupaadhi.html" class="story-link">
+                <a href="en_pakkam/idhayathil-orupaadhi.html" class="story-link">
                     <h3 class="story-title">இதயத்தில் ஒருபாதி இரவல்கொடு…</h3>
                     <p class="story-excerpt">கவிதைத்தொழில் செய்து வந்தவள்… காதல் துயிலில் விழுகிறேனோ… உண்மையென்று நீயுணர்ந்து கொண்டால்…</p>
                     <p class="story-date">Aug 20, 2016</p>
@@ -767,7 +1039,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/kavithaigalmudivadhillai.html" class="story-link">
+                <a href="en_pakkam/kavithaigalmudivadhillai.html" class="story-link">
                     <h3 class="story-title">கவிதைகள் முடிவதில்லை</h3>
                     <p class="story-excerpt">மார்கழியின் முன் பனி குளிரில் கைவிரல் நடுக்கத்தின் நடுவே பிடிக்கப்பட்ட பேனா முனையில்...</p>
                     <p class="story-date">Jul 02, 2016</p>
@@ -775,7 +1047,7 @@
             </div>
 
             <div class="story-card">
-                <a href="posts/amma.html" class="story-link">
+                <a href="en_pakkam/amma.html" class="story-link">
                     <h3 class="story-title">அம்மா..!!!</h3>
                     <p class="story-excerpt">என் வாழ்வின் முதல் குரல்... என் கவிதையின் முதல் வரி... என் உள்ளத்தின் முதல் ஒலி...</p>
                     <p class="story-date">Coming Soon</p>
@@ -791,7 +1063,7 @@
             <p class="subtitle">Technical insights and personal reflections</p>
         </div>
         
-        <div class="blog-posts">
+        <div class="blog-en_pakkam">
             <div class="blog-post">
                 <h3 class="story-title">The Art of Clean Code Architecture</h3>
                 <p class="story-excerpt">Exploring advanced patterns in software design that create maintainable, scalable, and elegant solutions. A deep dive into SOLID principles and their practical applications.</p>
@@ -872,7 +1144,7 @@
     </div>
 
     <div id="books" class="content-section">
-        <div class="back-button" onclick="showHero()">←</div>
+        <div class="back-button" onclick="showHero()"class="portal-cta">←back</div>
         <div class="content-header">
             <h2 class="content-title">இந்திர நீலமும் இமைக்கா இரவுகளும்</h2>
             <p class="subtitle">வாசகர்களின் கருத்துக்கள்</p>
@@ -888,32 +1160,38 @@
             <a href="book_reviews/review-2.html" class="review-card">
                 <div class="review-number">வாசகர் கருத்து #2</div>
                 <div class="review-preview">கதை கற்பனை என்று சொன்னது ஏத்துக்க முடியவில்லை உண்மையான சம்பவங்களை நேரில் பார்த்தது போல் இருக்கிறது.</div>
+            <div class="review-author">கவிஞர் சுரபி இராமச்சந்திரன்</div>
             </a>
 
             <a href="book_reviews/review-3.html" class="review-card">
                 <div class="review-number">வாசகர் கருத்து #3</div>
                 <div class="review-preview">மணிமேகலை, பூம்புகார், காதல், வரலாறு என்று புத்தகத்தை பற்றி நிறைய கருத்துக்கள் வந்து விட்டது.</div>
+            <div class="review-author">பொறியாளர்.செள.ஸ்டாலின்பாரதி</div>
+            
             </a>
 
             <a href="book_reviews/review-4.html" class="review-card">
                 <div class="review-number">வாசகர் கருத்து #4</div>
                 <div class="review-preview">வரலாறு, புவியியல் என்று தொடங்கி அண்டம், ஆழ்கடலில் இறங்கி, சித்தர்கள் வரை அனைத்தையுமே விரிவாக புரியும் படி கதை எடுத்துரைத்தது மிகவும் சிறப்பு.</div>
+                <div class="review-author">Deepa Viyal</div>
             </a>
 
             <a href="book_reviews/review-5.html" class="review-card">
                 <div class="review-number">வாசகர் கருத்து #5</div>
                 <div class="review-preview">படங்களும் காட்சிக்கு மேலும் அழகு சேர்த்தது. கதையின் திருப்பங்கள் எதிர்பாராத விதமாக இருந்தன.</div>
+                <div class="review-author">Writer Raghu Raman</div>
             </a>
 
             <a href="book_reviews/review-6.html" class="review-card">
                 <div class="review-number">வாசகர் கருத்து #6</div>
                 <div class="review-preview">எழுத்து நடை மிகவும் கவர்ந்தது. கதையின் ஓட்டம் ஒரு நொடி கூட தடைபடாமல் தொடர்ந்தது.</div>
+                <div class="review-author">எழுத்தாளர் கற்பகாம்பாள் கண்ணதாசன்</div>
             </a>
 
             <a href="book_reviews/review-7.html" class="review-card">
                 <div class="review-number">வாசகர் கருத்து #7</div>
                 <div class="review-preview">வித்தியாசமான ஒரு புதிய முயற்சி. வாசிக்கத் துவங்கினால் கீழே வைக்க முடியாமல் சரசரவென நகர்கிறது கதை.</div>
-                <div class="review-author">ச.தமிழ்ச்செல்வன்</div>
+                <div class="review-author">Honbl.ச.தமிழ்ச்செல்வன்</div>
             </a>
         </div>
 
@@ -993,6 +1271,232 @@
             document.querySelector('.floating-particles').style.transform = `translateY(${rate}px)`;
         });
 
+        </main>
+    </div>
+
+    <script>
+        // Global state management
+        let currentSection = null;
+        const navigationHandlers = {
+            init() {
+                try {
+                    // Safe DOM queries
+                    const navToggle = document.querySelector('.nav-toggle');
+                    const navMenu = document.querySelector('.nav-menu');
+                    const navLinks = document.querySelectorAll('.nav-menu a');
+                    const portals = document.querySelectorAll('.portal');
+                    const backButtons = document.querySelectorAll('.back-button');
+                    
+                    if (navToggle && navMenu) {
+                        // Mobile menu toggle
+                        navToggle.addEventListener('click', () => {
+                            navMenu.classList.toggle('active');
+                            navToggle.classList.toggle('active');
+                        });
+
+                        // Close menu when clicking outside
+                        document.addEventListener('click', (e) => {
+                            if (!e.target.closest('.nav-toggle') && !e.target.closest('.nav-menu')) {
+                                navMenu.classList.remove('active');
+                                navToggle.classList.remove('active');
+                            }
+                        });
+                    }
+
+                    // Navigation link handlers
+                    navLinks.forEach(link => {
+                        link.addEventListener('click', (e) => {
+                            const section = link.dataset.section;
+                            if (section) {
+                                e.preventDefault();
+                                navigationHandlers.showSection(section);
+                                navMenu.classList.remove('active');
+                                navToggle.classList.remove('active');
+                            }
+                            // If no data-section attribute, let the default link behavior work
+                        });
+                    });
+
+                    // Portal navigation handlers
+                    portals.forEach(portal => {
+                        // Make portals keyboard accessible
+                        portal.setAttribute('role', 'button');
+                        portal.setAttribute('tabindex', '0');
+                        
+                        const handlePortalActivation = () => {
+                            const section = portal.dataset.section;
+                            if (section === 'books') {
+                                // Direct link for books section
+                                window.location.href = 'book_reviews/index.html';
+                            } else {
+                                navigationHandlers.showSection(section);
+                            }
+                        };
+
+                        // Click handler
+                        portal.addEventListener('click', (e) => {
+                            // Prevent navigation if clicking on the CTA link
+                            if (!e.target.closest('.portal-cta')) {
+                                e.preventDefault();
+                                handlePortalActivation();
+                            }
+                        });
+
+                        // Keyboard handler
+                        portal.addEventListener('keydown', (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                handlePortalActivation();
+                            }
+                        });
+                    });
+
+                    // Back button handlers
+                    backButtons.forEach(button => {
+                        button.addEventListener('click', () => navigationHandlers.showHero());
+                    });
+
+                } catch (error) {
+                    console.warn('Error initializing navigation:', error);
+                }
+            },
+
+            showSection(sectionId) {
+                try {
+                    const hero = document.getElementById('hero');
+                    const sections = document.querySelectorAll('.content-section');
+                    
+                    if (hero && sections) {
+                        hero.style.display = 'none';
+                        sections.forEach(section => section.classList.remove('active'));
+                        
+                        const targetSection = document.getElementById(sectionId);
+                        if (targetSection) {
+                            targetSection.classList.add('active');
+                            currentSection = sectionId;
+                            
+                            // Smooth scroll to top
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                } catch (error) {
+                    console.warn('Error showing section:', error);
+                }
+            },
+
+            showHero() {
+                try {
+                    const hero = document.getElementById('hero');
+                    const sections = document.querySelectorAll('.content-section');
+                    
+                    if (hero && sections) {
+                        hero.style.display = 'flex';
+                        sections.forEach(section => section.classList.remove('active'));
+                        currentSection = null;
+                    }
+                } catch (error) {
+                    console.warn('Error showing hero:', error);
+                }
+            }
+        };
+
+        // Particle animation optimization
+        const particleSystem = {
+            init() {
+                try {
+                    const container = document.querySelector('.floating-particles');
+                    if (!container) return;
+
+                    // Check for reduced motion preference
+                    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    if (prefersReducedMotion) {
+                        container.style.display = 'none';
+                        return;
+                    }
+
+                    // Create particles only when hero is visible
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && container.children.length === 0) {
+                                this.createParticles(container);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+
+                    observer.observe(container);
+                } catch (error) {
+                    console.warn('Error initializing particles:', error);
+                }
+            },
+
+            createParticles(container) {
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    particle.style.animationDelay = `${Math.random() * 6}s`;
+                    particle.style.animationDuration = `${Math.random() * 3 + 3}s`;
+                    container.appendChild(particle);
+                }
+            }
+        };
+
+        // Animation and intersection observers
+        const animationSystem = {
+            init() {
+                try {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }
+                        });
+                    });
+
+                    document.querySelectorAll('.portal, .story-card, .blog-post').forEach(el => {
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(20px)';
+                        el.style.transition = 'all 0.6s ease';
+                        observer.observe(el);
+                    });
+                } catch (error) {
+                    console.warn('Error initializing animations:', error);
+                }
+            }
+        };
+
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            navigationHandlers.init();
+            particleSystem.init();
+            animationSystem.init();
+        });
+
+        // Optimized parallax effect
+        try {
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const particles = document.querySelector('.floating-particles');
+                        if (particles) {
+                            const scrolled = window.pageYOffset;
+                            const rate = scrolled * -0.5;
+                            particles.style.transform = `translateY(${rate}px)`;
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        } catch (error) {
+            console.warn('Error initializing parallax:', error);
+        }
     </script>
 </body>
 </html>

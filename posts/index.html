@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="என் பக்கம் - தமிழ் படைப்புகள், கவிதைகள், சிறுகதைகள்">
+    <title>என் பக்கம் - Pratheba's Tamil Writings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #10b981;
+            --accent-color: #d4af37;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Tamil', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: var(--nav-height, 64px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .hamburger {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .hamburger::before {
+            top: -8px;
+        }
+
+        .hamburger::after {
+            bottom: -8px;
+        }
+
+        .nav-toggle.active .hamburger {
+            background: transparent;
+        }
+
+        .nav-toggle.active .hamburger::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .nav-toggle.active .hamburger::after {
+            transform: rotate(-45deg);
+            bottom: 0;
+        }
+
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 1rem 4rem;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .posts-list {
+            list-style: none;
+        }
+
+        .post-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        .post-item:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .post-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 2rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .post-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+        }
+
+        .post-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 0;
+            flex: 1;
+        }
+
+        .post-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: var(--nav-height, 64px);
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                display: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 1rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .main-content {
+                padding-top: 6rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .post-link {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .post-date {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">Pratheba.com</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <div class="nav-menu">
+                <a href="../index.html#en-pakkam" data-section="en-pakkam">என் பக்கம்</a>
+                <a href="../index.html#blog" data-section="blog">Blog</a>
+                <a href="../index.html#portfolio" data-section="portfolio">Portfolio</a>
+                <a href="../book_reviews/index.html">வாசகர் பக்கம்</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-title">
+            <h1 class="title">என் பக்கம்</h1>
+            <p class="subtitle">உள்ளத்தின் உணர்வுகள், கவிதைகள், சிறுகதைகள்</p>
+        </div>
+
+        <ul class="posts-list">
+            <li class="post-item">
+                <a href="sivaratridiaries.html" class="post-link">
+                    <h2 class="post-title">சிவராத்திரியில் என் டைரி குறிப்புகள்</h2>
+                    <span class="post-date">Feb 22, 2020</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="cinema.html" class="post-link">
+                    <h2 class="post-title">சினிமாவும் வக்கிரங்களும்...</h2>
+                    <span class="post-date">Feb 29, 2020</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="mayiladuthurai_express.html" class="post-link">
+                    <h2 class="post-title">மயிலாடுதுறை எக்ஸ்பிரஸ்</h2>
+                    <span class="post-date">Sep 28, 2018</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="anandha-yaazh.html" class="post-link">
+                    <h2 class="post-title">ஆனந்த யாழ்...</h2>
+                    <span class="post-date">Feb 08, 2018</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="kaditham.html" class="post-link">
+                    <h2 class="post-title">கடிதம்...</h2>
+                    <span class="post-date">Oct 30, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="kanavugal.html" class="post-link">
+                    <h2 class="post-title">கனவுகள்…</h2>
+                    <span class="post-date">Oct 18, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="happy-wedding-day.html" class="post-link">
+                    <h2 class="post-title">மார்க்கண்டேயருக்கு மணநாள்…</h2>
+                    <span class="post-date">Aug 23, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="mazhaikaala-maalai.html" class="post-link">
+                    <h2 class="post-title">மழைக்கால மாலை…</h2>
+                    <span class="post-date">Aug 09, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="eluthu.html" class="post-link">
+                    <h2 class="post-title">எழுத்து…</h2>
+                    <span class="post-date">Aug 08, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="kannagi.html" class="post-link">
+                    <h2 class="post-title">காண்பது கண்ணகியோ…</h2>
+                    <span class="post-date">Aug 05, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="thendral-illam.html" class="post-link">
+                    <h2 class="post-title">தென்றல்…</h2>
+                    <span class="post-date">Aug 03, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="rayil_payanam.html" class="post-link">
+                    <h2 class="post-title">ரயில்பயண ஞாபகங்கள்…</h2>
+                    <span class="post-date">Jul 31, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="neeyum-naanum.html" class="post-link">
+                    <h2 class="post-title">நீயும் நானும்…</h2>
+                    <span class="post-date">Jul 24, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="kaviyondru_elutha.html" class="post-link">
+                    <h2 class="post-title">கவியொன்றெழுத எத்தனித்தேன்…</h2>
+                    <span class="post-date">Jul 23, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="mazhai_kaalam_2.html" class="post-link">
+                    <h2 class="post-title">பெங்களூரில் ஒரு மழைப்பொழுது…</h2>
+                    <span class="post-date">Apr 17, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="irakkamillaa_urakkam.html" class="post-link">
+                    <h2 class="post-title">இரக்கமில்லா உறக்கம்…</h2>
+                    <span class="post-date">Mar 18, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="ninaivo-oru-paravai.html" class="post-link">
+                    <h2 class="post-title">நினைவோ ஒரு பறவை</h2>
+                    <span class="post-date">Mar 08, 2017</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="ki-raa-vin-vedhapuraththaarkku.html" class="post-link">
+                    <h2 class="post-title">கி.ரா வின் வேதபுரத்தார்க்கு…</h2>
+                    <span class="post-date">Oct 21, 2016</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="en_magizhchi.html" class="post-link">
+                    <h2 class="post-title">கவிதை</h2>
+                    <span class="post-date">Sep 25, 2016</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="neerkkodu.html" class="post-link">
+                    <h2 class="post-title">நீர்க்கோடு!!!</h2>
+                    <span class="post-date">Sep 15, 2016</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="thayumanavar.html" class="post-link">
+                    <h2 class="post-title">தாயும் ஆனவர்…</h2>
+                    <span class="post-date">Apr 05, 2016</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="idhayathil-orupaadhi.html" class="post-link">
+                    <h2 class="post-title">இதயத்தில் ஒருபாதி இரவல்கொடு…</h2>
+                    <span class="post-date">Aug 20, 2016</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="kavithaigalmudivadhillai.html" class="post-link">
+                    <h2 class="post-title">கவிதைகள் முடிவதில்லை</h2>
+                    <span class="post-date">Jul 02, 2016</span>
+                </a>
+            </li>
+            
+            <li class="post-item">
+                <a href="amma.html" class="post-link">
+                    <h2 class="post-title">அம்மா..!!!</h2>
+                    <span class="post-date">Coming Soon</span>
+                </a>
+            </li>
+        </ul>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-toggle') && !e.target.closest('.nav-menu')) {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
