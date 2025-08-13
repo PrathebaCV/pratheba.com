@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="வாசகர் பக்கம் - புத்தக விமர்சனங்கள், இலக்கிய கருத்            <div class="nav-menu">
+                <a href="../en_pakkam/index.html">என் பக்கம்</a>
+                <a href="../index.html#blog" data-section="blog">Blog</a>
+                <a href="../index.html#portfolio" data-section="portfolio">Portfolio</a>
+                <a href="../book_reviews/index.html">வாசகர் பக்கம்</a>
+            </div>்">
+    <title>வாசகர் பக்கம் - Pratheba's Book Reviews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../floating-menu.js"></script>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="வாசகர் கருத்துக்கள் - இந்திர நீலமும் இமைக்கா இரவுகளும்">
+    <title>வாசகர் கருত்துக்கள் - இந்திர நீலமும் இமைக்கா இரவுகளும்</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../floating-menu.js"></script>
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #10b981;
+            --accent-color: #d4af37;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Tamil', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: var(--nav-height, 64px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .hamburger {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .hamburger::before {
+            top: -8px;
+        }
+
+        .hamburger::after {
+            bottom: -8px;
+        }
+
+        .nav-toggle.active .hamburger {
+            background: transparent;
+        }
+
+        .nav-toggle.active .hamburger::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .nav-toggle.active .hamburger::after {
+            transform: rotate(-45deg);
+            bottom: 0;
+        }
+
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 1rem 4rem;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .reviews-list {
+            list-style: none;
+        }
+
+        .review-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        .review-item:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .review-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 2rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .review-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+        }
+
+        .review-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 0;
+            flex: 1;
+        }
+
+        .review-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: var(--nav-height, 64px);
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                display: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 1rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .main-content {
+                padding-top: 6rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .review-link {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .review-date {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">Pratheba.com</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+                        <div class="nav-menu">
+                <a href="../en_pakkam/index.html">என் பக்கம்</a>
+                <a href="../index.html#blog" data-section="blog">Blog</a>
+                <a href="../index.html#portfolio" data-section="portfolio">Portfolio</a>
+                <a href="../book_reviews/index.html">வாசகர் பக்கம்</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-title">
+            <h1 class="title">வாசகர் பக்கம்</h1>
+            <p class="subtitle">புத்தக விமர்சனங்கள், இலக்கிய கருத்துக்கள், வாசகர் அனுபவங்கள்</p>
+        </div>
+
+        <ul class="reviews-list">
+            <li class="review-item">
+                <a href="review-7.html" class="review-link">
+                    <h2 class="review-title">அணிந்துரை</h2>
+                    <span class="review-date">முன்னுரை</span>
+                </a>
+            </li>
+
+            <li class="review-item">
+                <a href="review-1.html" class="review-link">
+                    <h2 class="review-title">வாசகர் கருத்து #1</h2>
+                    <span class="review-date">விமர்சனம்</span>
+                </a>
+            </li>
+
+            <li class="review-item">
+                <a href="review-2.html" class="review-link">
+                    <h2 class="review-title">வாசகர் கருத்து #2</h2>
+                    <span class="review-date">விமர்சனம்</span>
+                </a>
+            </li>
+
+            <li class="review-item">
+                <a href="review-3.html" class="review-link">
+                    <h2 class="review-title">வாசகர் கருத்து #3</h2>
+                    <span class="review-date">விமர்சனம்</span>
+                </a>
+            </li>
+
+            <li class="review-item">
+                <a href="review-4.html" class="review-link">
+                    <h2 class="review-title">வாசகர் கருத்து #4</h2>
+                    <span class="review-date">விமர்சனம்</span>
+                </a>
+            </li>
+
+            <li class="review-item">
+                <a href="review-5.html" class="review-link">
+                    <h2 class="review-title">வாசகர் கருத்து #5</h2>
+                    <span class="review-date">விமர்சனம்</span>
+                </a>
+            </li>
+
+            <li class="review-item">
+                <a href="review-6.html" class="review-link">
+                    <h2 class="review-title">வாசகர் கருத்து #6</h2>
+                    <span class="review-date">விமர்சனம்</span>
+                </a>
+            </li>
+        </ul>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-toggle') && !e.target.closest('.nav-menu')) {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

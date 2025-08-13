@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>காண்பது கண்ணகியோ… - Pratheba</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../floating-menu.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Tamil', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            padding: 2rem;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #d4af37;
+        }
+
+        .post-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .post-content {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .post-content blockquote {
+            border-left: 4px solid #d4af37;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 2rem;
+                margin: 2rem 1rem;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-button" onclick="window.location.href='../index.html'; setTimeout(() => document.getElementById('en-pakkam').classList.add('active'), 100); return false;">←</a>
+    
+    <article class="post-container">
+        <h1 class="post-title">காண்பது கண்ணகியோ…</h1>
+        <p class="post-date">August 05, 2017</p>
+        <div class="post-content">
+            <p>காண்பது கண்ணகியோ…</p>
+<p>நீண்ட கரிய கூந்தல் கற்றைகள் காற்றில் புறள…</p>
+<p>அந்திச் சூரியன் தன்பங்கிற்கு அதில் மஞ்சள்பூச…</p>
+<p>மஞ்சள் குங்குமம் தவிற்கப்பட வேண்டியதாய் எண்ணி…</p>
+<p>தன்ஒற்றை தலைச்சிலுப்பலில்…</p>
+<p>கதிரவனை விரட்டிவிட்ட தோரணையில்…</p>
+<p>புன்னகை புகமுடியாத இறுக்கமான இதழ்களை ஈரப்படுத்தியபடியே…</p>
+<p>பல நூற்றாண்டுகள் ஈரத்தில் ஊறி பச்சைபூத்திறுக்கும் பாறையின்மேல்…</p>
+<p>பல்லாயிரம் ஆண்டாய் நீரோட்டத்தில் அமிழ்ந்து…</p>
+<p>பசுமை படர்ந்த பூமியில்…</p>
+<p>எத்தனை யுகமாய் அமர்ந்திருக்கிறாயோ யுவதியே… யௌவனம் மாறாமல்…</p>
+<p>மதுரையையெரித்த கனலின்னும் சுடருதோ உன் கண்ணில்…</p>
+<p>விடைபகர்வாயோ தரிசுவிழி சிறிதாய் அசைத்தேனும்…</p>
+        </div>
+    </article>
+</body>
+</html>
