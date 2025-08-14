@@ -57,7 +57,6 @@ class FloatingMenu {
                 </div>
                 <ul class="menu-list">
                     <li><a href="${this.getRelativePath('')}" class="menu-item" data-section="home">🏠 முகப்பு</a></li>
-                    <li><a href="${this.getRelativePath('portfolio.html')}" class="menu-item" data-section="about">👤 என்னைப் பற்றி</a></li>
                     <li><a href="${this.getRelativePath('portfolio.html')}" class="menu-item" data-section="portfolio">💼 Portfolio</a></li>
                     <li><a href="${this.getRelativePath('en_pakkam/index.html')}" class="menu-item" data-section="en-pakkam">✍️ என் பக்கம்</a></li>
                     <li><a href="${this.getRelativePath('book_reviews/index.html')}" class="menu-item" data-section="reviews">📚 வாசகர் பக்கம்</a></li>
@@ -115,8 +114,6 @@ class FloatingMenu {
                 case 'home':
                     isActive = currentPath === '/' || currentPath.endsWith('index.html') && !currentPath.includes('/en_pakkam/') && !currentPath.includes('/book_reviews/');
                     break;
-                case 'about':
-                    isActive = currentPath.includes('portfolio.html');
                     break;
                 case 'portfolio':
                     isActive = currentPath.includes('portfolio.html');
