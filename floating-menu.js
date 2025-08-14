@@ -1,21 +1,66 @@
 // Floating Menu Component for Pratheba.com
+// Note: This menu only activates on mobile devices (≤768px) to avoid 
+// conflicts with the existing desktop navigation system
 class FloatingMenu {
     constructor() {
         this.isOpen = false;
         this.currentPath = window.location.pathname;
+        this.menuInitialized = false;
         this.init();
+        this.handleResize();
     }
 
     init() {
-        this.createMenuHTML();
-        this.attachEventListeners();
-        this.handleKeyboardNavigation();
+        // Only initialize on mobile devices to avoid conflicts with existing nav
+        if (this.isMobile()) {
+            this.createMenuHTML();
+            this.attachEventListeners();
+            this.handleKeyboardNavigation();
+            this.menuInitialized = true;
+        }
+    }
+
+    isMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    handleResize() {
+        window.addEventListener('resize', () => {
+            if (this.isMobile() && !this.menuInitialized) {
+                // Initialize menu when resizing to mobile
+                this.createMenuHTML();
+                this.attachEventListeners();
+                this.handleKeyboardNavigation();
+                this.menuInitialized = true;
+            } else if (!this.isMobile() && this.menuInitialized) {
+                // Remove menu when resizing to desktop
+                this.removeMenu();
+                this.menuInitialized = false;
+            }
+        });
+    }
+
+    removeMenu() {
+        const menuContainer = document.querySelector('.floating-menu-container');
+        const styles = document.getElementById('floating-menu-styles');
+        
+        if (menuContainer) {
+            menuContainer.remove();
+        }
+        if (styles) {
+            styles.remove();
+        }
+        
+        // Reset body overflow if menu was open
+        document.body.style.overflow = '';
+        this.isOpen = false;
     }
 
     createMenuHTML() {
         // Create floating menu container
         const menuContainer = document.createElement('div');
         menuContainer.className = 'floating-menu-container';
+        
         menuContainer.innerHTML = `
             <button class="floating-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="menu-icon">
@@ -68,6 +113,11 @@ class FloatingMenu {
             relativePath = '../';
         }
 
+        // Handle empty path for home page
+        if (path === '') {
+            return relativePath + 'index.html';
+        }
+
         return relativePath + path;
     }
 
@@ -81,7 +131,7 @@ class FloatingMenu {
 
             switch (section) {
                 case 'home':
-                    isActive = currentPath === '/' || currentPath.endsWith('index.html') && !currentPath.includes('/en_pakkam/') && !currentPath.includes('/book_reviews/');
+                    isActive = currentPath === '/' || currentPath.endsWith('index.html') && currentPath.includes('/en_pakkam/') && currentPath.includes('/book_reviews/');
                     break;
                 case 'about':
                     isActive = currentPath.includes('about-me.html');
@@ -106,16 +156,23 @@ class FloatingMenu {
         const overlay = document.querySelector('.menu-overlay');
         const menuItems = document.querySelectorAll('.menu-item');
 
+        if (!toggle || !menu || !overlay) {
+            console.warn('Floating menu elements not found');
+            return;
+        }
+
         // Toggle menu
         toggle.addEventListener('click', () => this.toggleMenu());
         
         // Close menu when clicking overlay
         overlay.addEventListener('click', () => this.closeMenu());
         
-        // Close menu when clicking menu items
+        // Close menu when clicking menu items (allow navigation to complete)
         menuItems.forEach(item => {
-            item.addEventListener('click', () => {
-                setTimeout(() => this.closeMenu(), 100);
+            item.addEventListener('click', (e) => {
+                // Don't prevent default - let the link navigate normally
+                // Close menu after navigation starts
+                setTimeout(() => this.closeMenu(), 150);
             });
         });
 
@@ -413,6 +470,13 @@ class FloatingMenu {
             }
 
             /* Mobile responsive */
+            @media (min-width: 769px) {
+                /* Hide floating menu completely on desktop to avoid conflicts */
+                .floating-menu-container {
+                    display: none !important;
+                }
+            }
+
             @media (max-width: 768px) {
                 .floating-menu-toggle {
                     top: 1rem;
@@ -474,9 +538,12 @@ class FloatingMenu {
     }
 }
 
-// Initialize the floating menu when DOM is loaded
+// Initialize the floating menu when DOM is loaded (mobile only)
 document.addEventListener('DOMContentLoaded', () => {
-    new FloatingMenu();
+    // Only create floating menu on mobile devices to avoid conflicts with desktop nav
+    if (window.innerWidth <= 768) {
+        new FloatingMenu();
+    }
 });
 
 // Export for module usage if needed
