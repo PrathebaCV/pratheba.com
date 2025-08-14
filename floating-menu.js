@@ -131,7 +131,7 @@ class FloatingMenu {
 
             switch (section) {
                 case 'home':
-                    isActive = currentPath === '/' || currentPath.endsWith('index.html') && !currentPath.includes('/en_pakkam/') && !currentPath.includes('/book_reviews/');
+                    isActive = currentPath === '/' || currentPath.endsWith('index.html') && currentPath.includes('/en_pakkam/') && currentPath.includes('/book_reviews/');
                     break;
                 case 'about':
                     isActive = currentPath.includes('about-me.html');
