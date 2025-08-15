@@ -452,54 +452,35 @@ class FloatingMenu {
             /* Mobile responsive */
             @media (max-width: 768px) {
                 .floating-menu-toggle {
-                    top: 0.5rem;
-                    right: 0.5rem;
-                    width: 40px;
-                    height: 40px;
+                    top: 1rem;
+                    right: 1rem;
+                    width: 50px;
+                    height: 50px;
                 }
 
                 .floating-menu {
-                    width: 95vw;
-                    right: -95vw;
+                    width: 280px;
+                    right: -280px;
                 }
 
                 .menu-item {
-                    padding: 0.4rem 0.8rem;
-                    font-size: 4pt;
+                    padding: 0.8rem 1.2rem;
+                    font-size: 1rem;
                 }
 
                 .menu-header {
-                    padding: 0.8rem 0.8rem 0.4rem;
+                    padding: 1.5rem 1.2rem 0.8rem;
                 }
 
                 .menu-header h3 {
-                    font-size: 4pt;
-                }
-
-                .social-link {
-                    width: 30px;
-                    height: 30px;
-                    font-size: 4pt;
-                }
-
-                .menu-footer {
-                    padding: 0.8rem;
+                    font-size: 1.2rem;
                 }
             }
 
             @media (max-width: 480px) {
                 .floating-menu {
-                    width: 95vw;
-                    right: -95vw;
-                }
-
-                .menu-item {
-                    padding: 0.3rem 0.6rem;
-                    font-size: 4pt;
-                }
-
-                .menu-header h3 {
-                    font-size: 4pt;
+                    width: 100vw;
+                    right: -100vw;
                 }
             }
 
