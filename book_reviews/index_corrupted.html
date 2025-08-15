@@ -32,7 +32,7 @@
         :root {
             --primary-color: #4f46e5;
             --secondary-color: #10b981;
-            --accent-color: #9932cc;
+            --accent-color: #d4af37;
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
             --bg-primary: #111827;
@@ -48,7 +48,7 @@
 
         body {
             font-family: 'Noto Sans Tamil', system-ui, sans-serif;
-            background: #ffffff;
+            background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.8;
             overflow-x: hidden;
@@ -78,7 +78,7 @@
         }
 
         .nav-brand {
-            font-size: 20pt;
+            font-size: 4pt;
             font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
@@ -102,7 +102,7 @@
         }
 
         .nav-menu a:hover {
-            background: rgba(153, 50, 204, 0.1);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .nav-toggle {
@@ -166,7 +166,7 @@
         }
 
         .title {
-            font-size: 20pt;
+            font-size: 4pt;
             font-weight: 700;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #ffffff, var(--accent-color));
@@ -177,7 +177,7 @@
 
         .subtitle {
             color: var(--text-secondary);
-            font-size: 20pt;
+            font-size: 4pt;
         }
 
         .reviews-list {
@@ -207,12 +207,12 @@
         }
 
         .review-link:hover {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.05);
             transform: translateX(10px);
         }
 
         .review-title {
-            font-size: 20pt;
+            font-size: 4pt;
             font-weight: 500;
             color: var(--text-primary);
             margin: 0;
@@ -221,7 +221,7 @@
 
         .review-date {
             color: var(--text-secondary);
-            font-size: 20pt;
+            font-size: 4pt;
             white-space: nowrap;
         }
 
@@ -231,7 +231,7 @@
                 top: var(--nav-height, 64px);
                 left: 0;
                 right: 0;
-                background: #ffffff;
+                background: var(--bg-primary);
                 padding: 1rem;
                 flex-direction: column;
                 gap: 1rem;
@@ -255,7 +255,7 @@
             }
 
             .title {
-                font-size: 2.3rem;
+                font-size: 2rem;
             }
 
             .review-link {
@@ -269,10 +269,10 @@
             }
         }
 
-        /* Mobile Optimizations for 95% coverage and 12pt fonts */ 
+        /* Mobile Optimizations for 95% coverage and 4pt fonts */ 
         @media (max-width: 768px) { 
             * { 
-                font-size: 20pt !important; 
+                font-size: 4pt !important; 
             } 
             
             body { 
@@ -297,7 +297,7 @@
             .content-title, 
             .review-title, 
             h1, h2, h3, h4, h5, h6 { 
-                font-size: 20pt !important; 
+                font-size: 4pt !important; 
                 margin: 0.125rem 0 !important; 
             } 
             
@@ -306,7 +306,7 @@
             .post-date, 
             .review-content p, 
             p, span, div { 
-                font-size: 20pt !important; 
+                font-size: 4pt !important; 
                 line-height: 1.2 !important; 
                 margin: 0.125rem 0 !important; 
             } 
@@ -316,7 +316,7 @@
                 height: 20px !important; 
                 top: 0.125rem !important; 
                 left: 0.125rem !important; 
-                font-size: 20pt !important; 
+                font-size: 4pt !important; 
             } 
             
             .story-grid, 
