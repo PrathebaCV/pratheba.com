@@ -36,8 +36,10 @@ class FloatingMenu {
             styles.remove();
         }
         
-        // Reset body overflow if menu was open
+        // Reset all body styles when removing menu
         document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.documentElement.style.overflow = '';
         this.isOpen = false;
     }
 
@@ -57,6 +59,7 @@ class FloatingMenu {
                 </div>
                 <ul class="menu-list">
                     <li><a href="${this.getRelativePath('')}" class="menu-item" data-section="home">🏠 முகப்பு</a></li>
+                    <li><a href="${this.getRelativePath('about-me.html')}" class="menu-item" data-section="about">👤 About Me</a></li>
                     <li><a href="${this.getRelativePath('portfolio.html')}" class="menu-item" data-section="portfolio">💼 Portfolio</a></li>
                     <li><a href="${this.getRelativePath('en_pakkam/index.html')}" class="menu-item" data-section="en-pakkam">✍️ என் பக்கம்</a></li>
                     <li><a href="${this.getRelativePath('book_reviews/index.html')}" class="menu-item" data-section="reviews">📚 வாசகர் பக்கம்</a></li>
@@ -112,7 +115,7 @@ class FloatingMenu {
 
             switch (section) {
                 case 'home':
-                    isActive = currentPath === '/' || currentPath.endsWith('index.html') && !currentPath.includes('/en_pakkam/') && !currentPath.includes('/book_reviews/');
+                    isActive = currentPath === '/' || currentPath.endsWith('index.html') && !currentPath.includes('portfolio.html') && !currentPath.includes('/en_pakkam/') && !currentPath.includes('/book_reviews/');
                     break;
                 case 'portfolio':
                     isActive = currentPath.includes('portfolio.html');
@@ -143,10 +146,17 @@ class FloatingMenu {
         }
 
         // Toggle menu
-        toggle.addEventListener('click', () => this.toggleMenu());
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleMenu();
+        });
         
-        // Close menu when clicking overlay
-        overlay.addEventListener('click', () => this.closeMenu());
+        // Close menu when clicking overlay (but not back button)
+        overlay.addEventListener('click', (e) => {
+            if (!e.target.closest('.back-link')) {
+                this.closeMenu();
+            }
+        });
         
         // Close menu when clicking menu items (allow navigation to complete)
         menuItems.forEach(item => {
@@ -163,6 +173,9 @@ class FloatingMenu {
                 this.closeMenu();
             }
         });
+
+        // Completely ignore back button clicks - don't add any listeners for them
+        // This prevents any interference with back button navigation
     }
 
     handleKeyboardNavigation() {
@@ -217,12 +230,21 @@ class FloatingMenu {
         const overlay = document.querySelector('.menu-overlay');
 
         this.isOpen = false;
-        toggle.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
-        menu.classList.remove('active');
-        menu.setAttribute('aria-hidden', 'true');
-        overlay.classList.remove('active');
+        if (toggle) {
+            toggle.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+        if (menu) {
+            menu.classList.remove('active');
+            menu.setAttribute('aria-hidden', 'true');
+        }
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+        // Always reset body overflow to ensure normal scrolling
         document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.documentElement.style.overflow = '';
     }
 
     addMenuStyles() {
@@ -491,7 +513,7 @@ class FloatingMenu {
 
 // Initialize the floating menu when DOM is loaded (all devices)
 document.addEventListener('DOMContentLoaded', () => {
-    new FloatingMenu();
+    window.floatingMenuInstance = new FloatingMenu();
 });
 
 // Export for module usage if needed
