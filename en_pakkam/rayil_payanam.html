@@ -15,8 +15,8 @@
 
         body {
             font-family: 'Noto Sans Tamil', system-ui, sans-serif;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            color: #000000;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
             line-height: 1.8;
             padding: 0.25rem;
         }
@@ -27,8 +27,8 @@
             left: 2rem;
             width: 50px;
             height: 50px;
-            background: rgba(153, 50, 204, 0.1);
-            border: 1px solid #cccccc;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -54,21 +54,21 @@
         }
 
         .post-title {
-            font-size: 20pt;
+            font-size: 4pt;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #9932cc;
+            color: #d4af37;
         }
 
         .post-date {
-            color: rgba(102, 102, 102, 0.8);
-            font-size: 20pt;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 4pt;
             margin-bottom: 2rem;
         }
 
         .post-content {
-            color: rgba(0, 0, 0, 0.9);
-            font-size: 20pt;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 4pt;
         }
 
         .post-content p {
@@ -79,19 +79,19 @@
             border-left: 4px solid #d4af37;
             padding-left: 1rem;
             margin: 1.5rem 0;
-            color: rgba(0, 0, 0, 0.8);
+            color: rgba(255, 255, 255, 0.8);
         }
 
 
             .post-title {
-                font-size: 2.3rem;
+                font-size: 2rem;
             }
         }
 
-        /* Mobile Optimizations for 95% coverage and 12pt fonts */ 
+        /* Mobile Optimizations for 95% coverage and 4pt fonts */ 
         @media (max-width: 768px) { 
             * { 
-                font-size: 20pt !important; 
+                font-size: 4pt !important; 
             } 
             
             body { 
@@ -116,7 +116,7 @@
             .content-title, 
             .review-title, 
             h1, h2, h3, h4, h5, h6 { 
-                font-size: 20pt !important; 
+                font-size: 4pt !important; 
                 margin: 0.125rem 0 !important; 
             } 
             
@@ -125,7 +125,7 @@
             .post-date, 
             .review-content p, 
             p, span, div { 
-                font-size: 20pt !important; 
+                font-size: 4pt !important; 
                 line-height: 1.2 !important; 
                 margin: 0.125rem 0 !important; 
             } 
@@ -135,7 +135,7 @@
                 height: 20px !important; 
                 top: 0.125rem !important; 
                 left: 0.125rem !important; 
-                font-size: 20pt !important; 
+                font-size: 4pt !important; 
             } 
             
             .story-grid, 
