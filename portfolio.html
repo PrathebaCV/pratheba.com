@@ -25,11 +25,7 @@
         .portfolio-container {
             max-width: 1000px;
             margin: 4rem auto;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 3rem;
-            backdrop-filter: blur(10px);
+            padding: 2rem 0;
         }
 
         .portfolio-header {
@@ -248,8 +244,14 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
@@ -349,7 +351,7 @@
 </head>
 <body>
     <a href="index.html" class="back-link">←</a>
-    
+
     <div class="portfolio-container">
         <header class="portfolio-header">
             <h1 class="portfolio-title">பிரதீபா சந்திரமோகன்</h1>
@@ -361,9 +363,6 @@
             <p>
                 கொஞ்சம் கவிதைக்காரி, நிறைய கனவுக்காரி... 
                 தமிழ் கதை சொல்லும் பொறியியல் பட்டதாரி.
-            </p>
-            <p>
-          </section>   
             </p>
             <p>
                 கிண்டில் தளத்தில் மற்றும் அச்சு பதிப்பாக வெளியாகி உள்ள எனது இந்திரநீலமும் இமைக்கா இரவுகளும் நூல் 
