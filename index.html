@@ -15,16 +15,17 @@
     <script src="floating-menu.js"></script>
     <style>
         :root {
-            --primary-color: #4f46e5;
-            --secondary-color: #10b981;
-            --accent-color: #f59e0b;
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --bg-primary: #111827;
-            --bg-secondary: #1f2937;
-            --bg-card: rgba(31, 41, 55, 0.7);
+            --primary-color: #9932cc;
+            --secondary-color: #8b008b;
+            --accent-color: #9932cc;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: rgba(255, 255, 255, 0.9);
             --transition: all 0.3s ease;
             --nav-height: 64px;
+            --border-color: #cccccc;
         }
 
         /* Navigation Styles */
@@ -43,7 +44,7 @@
         }
 
         .nav-brand {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
@@ -66,7 +67,7 @@
         }
 
         .nav-menu a:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(153, 50, 204, 0.1);
         }
 
         .nav-toggle {
@@ -90,7 +91,7 @@
             padding: 1.5rem;
             background: var(--bg-card);
             border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #cccccc;
             backdrop-filter: blur(10px);
         }
 
@@ -163,7 +164,7 @@
                 top: var(--nav-height);
                 left: 0;
                 right: 0;
-                background: var(--bg-primary);
+                background: #ffffff;
                 padding: 0.5rem;
                 flex-direction: column;
                 gap: 0.5rem;
@@ -193,7 +194,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-            background: var(--bg-primary);
+            background: #ffffff;
             color: var(--text-primary);
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
@@ -229,8 +230,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 20% 30%, rgba(153, 50, 204, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 0, 139, 0.1) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -258,8 +259,8 @@
             border-radius: 1.5rem;
             padding: 2rem;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
@@ -273,11 +274,11 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-color);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .author-name {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -311,7 +312,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(153, 50, 204, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -366,7 +367,7 @@
             position: absolute;
             width: 2px;
             height: 2px;
-            background: var(--accent-color);
+            background: #9932cc;
             border-radius: 50%;
             opacity: 0.7;
             animation: float 6s infinite ease-in-out;
@@ -387,7 +388,7 @@
             position: absolute;
             width: 2px;
             height: 2px;
-            background: #ff6b35;
+            background: #9932cc;
             border-radius: 50%;
             opacity: 0.7;
             animation: float 6s infinite ease-in-out;
@@ -413,7 +414,7 @@
         }
 
         .subtitle {
-            font-size: clamp(4pt, 2vw, 1.25rem);
+            font-size: clamp(12pt, 2vw, 1.25rem);
             font-weight: 400;
             color: var(--text-secondary);
             text-align: center;
@@ -444,7 +445,7 @@
             cursor: pointer;
             transition: var(--transition);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             height: 100%;
@@ -473,7 +474,7 @@
         }
 
         .portal-en-pakkam {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(255, 107, 53, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(153, 50, 204, 0.1) 0%, rgba(139, 0, 139, 0.1) 100%);
         }
 
         .portal-en-pakkam::after {
@@ -483,21 +484,21 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="rgba(212,175,55,0.1)">௧ ௨ ௩ ௪ ௫</text></svg>') repeat;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="rgba(153,50,204,0.1)">௧ ௨ ௩ ௪ ௫</text></svg>') repeat;
             animation: rotate 20s linear infinite;
             z-index: -1;
         }
 
         .portal-blog {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(153, 50, 204, 0.1) 0%, rgba(139, 0, 139, 0.1) 100%);
         }
 
         .portal-portfolio {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(153, 50, 204, 0.1) 0%, rgba(139, 0, 139, 0.1) 100%);
         }
 
         .portal-books {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(153, 50, 204, 0.1) 0%, rgba(139, 0, 139, 0.1) 100%);
         }
 
         .portal-books .portal-cta {
@@ -534,7 +535,7 @@
         }
 
         .portal-portfolio .portal-icon {
-            background: var(--accent-color);
+            background: #9932cc;
             box-shadow: 0 4px 8px rgba(245, 158, 11, 0.2);
         }
 
@@ -542,16 +543,16 @@
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.25rem;
-            background: linear-gradient(135deg, #ffffff, #ff6b35);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .portal-description {
-            font-size: 4pt;
+            font-size: 20pt;
             line-height: 1.2;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-secondary);
             margin-bottom: 0.5rem;
         }
 
@@ -561,28 +562,28 @@
             left: 0.5rem;
             right: 0.5rem;
             padding: 6px 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(153, 50, 204, 0.1);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            color: white;
+            color: var(--text-primary);
             text-decoration: none;
             text-align: center;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            font-size: 4pt;
+            font-size: 20pt;
         }
 
         .portal-cta:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(153, 50, 204, 0.2);
             transform: translateY(-2px);
         }
 
-        .content-section {
+                .content-section {
             opacity: 0;
             visibility: hidden;
             min-height: 100vh;
             padding: 2rem;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             position: absolute;
             top: 0;
             left: 0;
@@ -604,7 +605,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: var(--bg-primary);
+            background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -639,8 +640,8 @@
             left: 2rem;
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(153, 50, 204, 0.1);
+            border: 1px solid #cccccc;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -664,16 +665,14 @@
         }
 
         .content-title {
-            font-size: 3rem;
+            font-size: 3.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff, #ff6b35);
+            background: linear-gradient(135deg, #9932cc, #8b008b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-
-        .tamil-content {
+        }        .tamil-content {
             font-family: 'Noto Sans Tamil', system-ui, sans-serif;
             line-height: 1.8;
         }
@@ -689,7 +688,7 @@
 
         .story-card {
             background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #cccccc;
             border-radius: 1rem;
             padding: 2rem;
             transition: var(--transition);
@@ -713,21 +712,21 @@
         }
 
         .story-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #d4af37;
+            color: #9932cc;
         }
 
         .story-excerpt {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(0, 0, 0, 0.8);
             line-height: 1.6;
             margin-bottom: 1rem;
         }
 
         .story-date {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            color: rgba(102, 102, 102, 0.8);
+            font-size: 1.8rem;
         }
 
         .blog-en_pakkam {
@@ -736,8 +735,8 @@
         }
 
         .blog-post {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #cccccc;
             border-radius: 15px;
             padding: 2.5rem;
             margin-bottom: 2rem;
@@ -754,7 +753,7 @@
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 2.3rem;
             font-weight: 600;
             margin-bottom: 2rem;
             color: #10b981;
@@ -767,11 +766,11 @@
         }
 
         .skill-item {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.9);
             padding: 1rem;
             border-radius: 10px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #cccccc;
         }
 
         /* Hover effects only on devices that support hover */
@@ -809,11 +808,11 @@
             }
 
             .author-name {
-                font-size: 4pt;
+                font-size: 20pt;
             }
 
             .author-bio {
-                font-size: 4pt;
+                font-size: 20pt;
             }
 
             .hero-section {
@@ -839,7 +838,7 @@
                 min-height: 28px;
                 display: flex;
                 align-items: center;
-                font-size: 4pt;
+                font-size: 20pt;
             }
 
             .portal-cta {
@@ -848,7 +847,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 4pt;
+                font-size: 20pt;
             }
             
             .story-grid {
@@ -921,34 +920,34 @@
             }
 
             body {
-                font-size: 4pt;
+                font-size: 20pt;
             }
 
             .main-title {
-                font-size: clamp(4pt, 5vw, 1.5rem);
+                font-size: clamp(12pt, 5vw, 1.5rem);
             }
 
             .subtitle {
-                font-size: 4pt;
+                font-size: 20pt;
             }
 
             .portal-title {
-                font-size: 4pt;
+                font-size: 20pt;
             }
 
             .portal-description {
-                font-size: 4pt;
+                font-size: 20pt;
             }
 
             .author-title {
-                font-size: 4pt;
+                font-size: 20pt;
             }
         }
 
-        /* Mobile Optimizations for 95% coverage and 4pt fonts */ 
+        /* Mobile Optimizations for 95% coverage and 12pt fonts */ 
         @media (max-width: 768px) { 
             * { 
-                font-size: 4pt !important; 
+                font-size: 20pt !important; 
             } 
             
             body { 
@@ -973,7 +972,7 @@
             .content-title, 
             .review-title, 
             h1, h2, h3, h4, h5, h6 { 
-                font-size: 4pt !important; 
+                font-size: 20pt !important; 
                 margin: 0.125rem 0 !important; 
             } 
             
@@ -982,7 +981,7 @@
             .post-date, 
             .review-content p, 
             p, span, div { 
-                font-size: 4pt !important; 
+                font-size: 20pt !important; 
                 line-height: 1.2 !important; 
                 margin: 0.125rem 0 !important; 
             } 
@@ -992,7 +991,7 @@
                 height: 20px !important; 
                 top: 0.125rem !important; 
                 left: 0.125rem !important; 
-                font-size: 4pt !important; 
+                font-size: 20pt !important; 
             } 
             
             .story-grid, 
