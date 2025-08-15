@@ -78,7 +78,7 @@
         }
 
         .nav-brand {
-            font-size: 4pt;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
@@ -166,7 +166,7 @@
         }
 
         .title {
-            font-size: 4pt;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #ffffff, var(--accent-color));
@@ -177,7 +177,7 @@
 
         .subtitle {
             color: var(--text-secondary);
-            font-size: 4pt;
+            font-size: 1.2rem;
         }
 
         .reviews-list {
@@ -186,7 +186,7 @@
 
         .review-item {
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 0;
+            padding: 1.5rem 0;
             transition: var(--transition);
         }
 
@@ -212,7 +212,7 @@
         }
 
         .review-title {
-            font-size: 4pt;
+            font-size: 1.25rem;
             font-weight: 500;
             color: var(--text-primary);
             margin: 0;
@@ -221,10 +221,14 @@
 
         .review-date {
             color: var(--text-secondary);
-            font-size: 4pt;
+            font-size: 0.9rem;
             white-space: nowrap;
         }
 
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
 
             .nav-menu {
                 position: absolute;
@@ -267,84 +271,6 @@
             .review-date {
                 font-size: 0.8rem;
             }
-        }
-
-        /* Mobile Optimizations for 95% coverage and 4pt fonts */ 
-        @media (max-width: 768px) { 
-            * { 
-                font-size: 4pt !important; 
-            } 
-            
-            body { 
-                padding: 0.125rem !important; 
-                margin: 0 !important; 
-                width: 100% !important; 
-                max-width: 100% !important; 
-            } 
-            
-            .post-container, 
-            .portfolio-container, 
-            .review-content, 
-            .container { 
-                width: 95% !important; 
-                max-width: 95% !important; 
-                margin: 0.25rem auto !important; 
-                padding: 0.25rem !important; 
-            } 
-            
-            .post-title, 
-            .portfolio-title, 
-            .content-title, 
-            .review-title, 
-            h1, h2, h3, h4, h5, h6 { 
-                font-size: 4pt !important; 
-                margin: 0.125rem 0 !important; 
-            } 
-            
-            .post-content, 
-            .portfolio-subtitle, 
-            .post-date, 
-            .review-content p, 
-            p, span, div { 
-                font-size: 4pt !important; 
-                line-height: 1.2 !important; 
-                margin: 0.125rem 0 !important; 
-            } 
-            
-            .back-button { 
-                width: 20px !important; 
-                height: 20px !important; 
-                top: 0.125rem !important; 
-                left: 0.125rem !important; 
-                font-size: 4pt !important; 
-            } 
-            
-            .story-grid, 
-            .portals-container { 
-                grid-template-columns: 1fr !important; 
-                gap: 0.125rem !important; 
-                padding: 0 !important; 
-                width: 95% !important; 
-                margin: 0 auto !important; 
-            } 
-            
-            .portal, 
-            .story-card { 
-                margin: 0.125rem !important; 
-                padding: 0.25rem !important; 
-                width: calc(100% - 0.25rem) !important; 
-            } 
-            
-            .hero-section { 
-                padding: 0.125rem !important; 
-            } 
-            
-            .main-content-area, 
-            .hero-layout { 
-                width: 95% !important; 
-                margin: 0 auto !important; 
-                padding: 0.125rem !important; 
-            } 
         }
     </style>
 </head>

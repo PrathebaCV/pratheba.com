@@ -116,11 +116,19 @@
         }
 
         /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+                background: none;
+                border: none;
+                padding: 0.5rem;
+                cursor: pointer;
+            }
 
             .hamburger {
                 display: block;
-                width: 20px;
-                height: 1px;
+                width: 24px;
+                height: 2px;
                 background: var(--text-primary);
                 position: relative;
                 transition: var(--transition);
@@ -130,18 +138,18 @@
             .hamburger::after {
                 content: '';
                 position: absolute;
-                width: 20px;
-                height: 1px;
+                width: 24px;
+                height: 2px;
                 background: var(--text-primary);
                 transition: var(--transition);
             }
 
             .hamburger::before {
-                top: -6px;
+                top: -8px;
             }
 
             .hamburger::after {
-                bottom: -6px;
+                bottom: -8px;
             }
 
             .nav-toggle.active .hamburger {
@@ -164,9 +172,9 @@
                 left: 0;
                 right: 0;
                 background: var(--bg-primary);
-                padding: 0.5rem;
+                padding: 1rem;
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 1rem;
                 display: none;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
@@ -181,7 +189,7 @@
 
             .author-sidebar {
                 position: static;
-                margin: 0.25rem;
+                margin: 1rem;
             }
         }
 
@@ -217,7 +225,7 @@
             align-items: center;
             position: relative;
             background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
-            padding: 0.5rem 0.125rem;
+            padding: 2rem 1rem;
             overflow: hidden;
         }
 
@@ -399,7 +407,7 @@
         }
 
         .main-title {
-            font-size: clamp(1rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
             letter-spacing: -0.02em;
             text-align: center;
@@ -407,38 +415,38 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
             position: relative;
-            padding: 0 0.125rem;
+            padding: 0 1rem;
         }
 
         .subtitle {
-            font-size: clamp(4pt, 2vw, 1.25rem);
+            font-size: clamp(1rem, 2vw, 1.25rem);
             font-weight: 400;
             color: var(--text-secondary);
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 3rem;
             position: relative;
-            padding: 0 0.125rem;
+            padding: 0 1rem;
             max-width: 600px;
         }
 
         .portals-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 0.5rem;
+            gap: 2rem;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 0.125rem;
+            padding: 0 1rem;
             position: relative;
             z-index: 2;
         }
 
         .portal {
             background: var(--bg-card);
-            border-radius: 0.5rem;
-            padding: 0.75rem;
+            border-radius: 1rem;
+            padding: 2rem;
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -448,7 +456,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            min-height: 280px;
+            min-height: 420px;
         }
 
         .portal::before {
@@ -515,33 +523,33 @@
         }
 
         .portal-icon {
-            width: 32px;
-            height: 32px;
-            margin-bottom: 0.5rem;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.5rem;
             background: var(--primary-color);
-            border-radius: 8px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 24px;
             color: white;
-            box-shadow: 0 4px 8px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 8px 16px rgba(79, 70, 229, 0.2);
         }
 
         .portal-blog .portal-icon {
             background: var(--secondary-color);
-            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.2);
         }
 
         .portal-portfolio .portal-icon {
             background: var(--accent-color);
-            box-shadow: 0 4px 8px rgba(245, 158, 11, 0.2);
+            box-shadow: 0 8px 16px rgba(245, 158, 11, 0.2);
         }
 
         .portal-title {
-            font-size: 1rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, #ffffff, #ff6b35);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -549,27 +557,26 @@
         }
 
         .portal-description {
-            font-size: 4pt;
-            line-height: 1.2;
+            font-size: 1rem;
+            line-height: 1.6;
             color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 0.5rem;
+            margin-bottom: 2rem;
         }
 
         .portal-cta {
             position: absolute;
-            bottom: 0.5rem;
-            left: 0.5rem;
-            right: 0.5rem;
-            padding: 6px 12px;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            padding: 12px 24px;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
+            border-radius: 25px;
             color: white;
             text-decoration: none;
             text-align: center;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            font-size: 4pt;
         }
 
         .portal-cta:hover {
@@ -792,6 +799,11 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
 
             .about-sidebar {
                 position: relative;
@@ -799,74 +811,62 @@
             }
 
             .author-card {
-                padding: 0.5rem;
-                margin: 0.125rem;
+                padding: 1.5rem;
             }
 
             .author-image img {
-                width: 50px;
-                height: 50px;
+                width: 80px;
+                height: 80px;
             }
 
             .author-name {
-                font-size: 4pt;
+                font-size: 1.25rem;
             }
 
             .author-bio {
-                font-size: 4pt;
+                font-size: 0.9rem;
             }
 
             .hero-section {
-                padding: 0.5rem 0.125rem 0.25rem;
+                padding: 4rem 1rem 2rem;
             }
 
             .portals-container {
                 grid-template-columns: 1fr;
-                gap: 0.25rem;
-                padding: 0 0.125rem;
-                width: 95%;
-                margin: 0 auto;
+                gap: 2rem;
             }
             
             .portal {
-                min-height: 200px;
-                padding: 0.5rem;
-                margin: 0;
+                min-height: 380px;
+                padding: 2rem;
             }
             
             .nav-menu a {
-                padding: 0.25rem;
-                min-height: 28px;
+                padding: 1rem;
+                min-height: 44px;
                 display: flex;
                 align-items: center;
-                font-size: 4pt;
             }
 
             .portal-cta {
-                padding: 0.25rem;
-                min-height: 24px;
+                padding: 1rem;
+                min-height: 44px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 4pt;
             }
             
             .story-grid {
                 grid-template-columns: 1fr;
-                padding: 0 0.125rem;
-                width: 95%;
-                margin: 0 auto;
+                padding: 0 1rem;
             }
             
             .content-section {
-                padding: 0.25rem;
-                width: 95%;
-                margin: 0 auto;
+                padding: 1rem;
             }
             
             .content-header {
-                padding-top: 1rem;
-                margin-bottom: 0.5rem;
+                padding-top: 4rem;
             }
             
             .skills-grid {
@@ -875,152 +875,46 @@
 
             .story-grid {
                 grid-template-columns: 1fr;
-                padding: 0 0.125rem;
+                padding: 0 1rem;
             }
 
             .content-title {
-                font-size: 1rem;
-                padding: 0 0.125rem;
+                font-size: 2rem;
+                padding: 0 1rem;
             }
 
             .content-header {
-                margin-bottom: 0.5rem;
-                padding-top: 0.5rem;
+                margin-bottom: 2rem;
+                padding-top: 2rem;
             }
 
             .back-button {
-                top: 0.25rem;
-                left: 0.25rem;
-                width: 28px;
-                height: 28px;
+                top: 1rem;
+                left: 1rem;
+                width: 40px;
+                height: 40px;
             }
 
             .story-card {
-                margin: 0 0.125rem 0.25rem;
-                padding: 0.5rem;
+                margin: 0 1rem 1rem;
+                padding: 1.5rem;
             }
 
             .blog-en_pakkam {
-                padding: 0 0.125rem;
-                width: 95%;
-                margin: 0 auto;
+                padding: 0 1rem;
             }
 
             .portfolio-sections {
-                padding: 0 0.125rem;
-                width: 95%;
-                margin: 0 auto;
+                padding: 0 1rem;
             }
 
             .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
 
             .cursor {
                 display: none;
             }
-
-            body {
-                font-size: 4pt;
-            }
-
-            .main-title {
-                font-size: clamp(4pt, 5vw, 1.5rem);
-            }
-
-            .subtitle {
-                font-size: 4pt;
-            }
-
-            .portal-title {
-                font-size: 4pt;
-            }
-
-            .portal-description {
-                font-size: 4pt;
-            }
-
-            .author-title {
-                font-size: 4pt;
-            }
-        }
-
-        /* Mobile Optimizations for 95% coverage and 4pt fonts */ 
-        @media (max-width: 768px) { 
-            * { 
-                font-size: 4pt !important; 
-            } 
-            
-            body { 
-                padding: 0.125rem !important; 
-                margin: 0 !important; 
-                width: 100% !important; 
-                max-width: 100% !important; 
-            } 
-            
-            .post-container, 
-            .portfolio-container, 
-            .review-content, 
-            .container { 
-                width: 95% !important; 
-                max-width: 95% !important; 
-                margin: 0.25rem auto !important; 
-                padding: 0.25rem !important; 
-            } 
-            
-            .post-title, 
-            .portfolio-title, 
-            .content-title, 
-            .review-title, 
-            h1, h2, h3, h4, h5, h6 { 
-                font-size: 4pt !important; 
-                margin: 0.125rem 0 !important; 
-            } 
-            
-            .post-content, 
-            .portfolio-subtitle, 
-            .post-date, 
-            .review-content p, 
-            p, span, div { 
-                font-size: 4pt !important; 
-                line-height: 1.2 !important; 
-                margin: 0.125rem 0 !important; 
-            } 
-            
-            .back-button { 
-                width: 20px !important; 
-                height: 20px !important; 
-                top: 0.125rem !important; 
-                left: 0.125rem !important; 
-                font-size: 4pt !important; 
-            } 
-            
-            .story-grid, 
-            .portals-container { 
-                grid-template-columns: 1fr !important; 
-                gap: 0.125rem !important; 
-                padding: 0 !important; 
-                width: 95% !important; 
-                margin: 0 auto !important; 
-            } 
-            
-            .portal, 
-            .story-card { 
-                margin: 0.125rem !important; 
-                padding: 0.25rem !important; 
-                width: calc(100% - 0.25rem) !important; 
-            } 
-            
-            .hero-section { 
-                padding: 0.125rem !important; 
-            } 
-            
-            .main-content-area, 
-            .hero-layout { 
-                width: 95% !important; 
-                margin: 0 auto !important; 
-                padding: 0.125rem !important; 
-            } 
         }
     </style>
 </head>

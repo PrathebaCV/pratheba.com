@@ -18,27 +18,25 @@
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             color: #ffffff;
             line-height: 1.8;
-            padding: 0.25rem;
+            padding: 2rem;
             min-height: 100vh;
-            font-size: 4pt;
         }
 
         .portfolio-container {
-            max-width: 95%;
-            width: 95%;
-            margin: 1rem auto;
-            padding: 0.25rem 0;
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2rem 0;
         }
 
         .portfolio-header {
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 3rem;
         }
 
         .portfolio-title {
-            font-size: 4pt;
+            font-size: 3rem;
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, #d4af37, #f7dc6f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -47,26 +45,26 @@
 
         .portfolio-subtitle {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 4pt;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
 
         .author-note {
-            padding: 0.25rem 0;
+            padding: 2rem 0;
             margin-bottom: 3rem;
             text-align: center;
         }
 
         .author-note h3 {
             color: #d4af37;
-            font-size: 4pt;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
             font-weight: 600;
         }
 
         .author-note p {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 4pt;
+            font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 1rem;
         }
@@ -94,14 +92,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0.5rem;
+            padding: 1.5rem;
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid rgba(212, 175, 55, 0.3);
             border-radius: 15px;
             color: white;
             text-decoration: none;
             text-align: center;
-            font-size: 4pt;
+            font-size: 1.1rem;
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -182,7 +180,7 @@
         }
 
         .publication-title {
-            font-size: 4pt;
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             line-height: 1.3;
@@ -191,7 +189,7 @@
         .publication-label {
             display: block;
             margin-top: 0.5rem;
-            font-size: 4pt;
+            font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
         }
 
@@ -253,17 +251,22 @@
             transform: translateY(-2px);
         }
 
+        @media (max-width: 768px) {
+            .portfolio-container {
+                padding: 2rem;
+                margin: 2rem 1rem;
+            }
 
             .portfolio-title {
-                font-size: 4pt;
+                font-size: 2.5rem;
             }
 
             .portfolio-subtitle {
-                font-size: 4pt;
+                font-size: 1.1rem;
             }
 
             .author-note {
-                padding: 0.25rem;
+                padding: 2rem;
             }
 
             .publications-grid {
@@ -273,7 +276,7 @@
 
             .publication-button {
                 padding: 1.2rem;
-                font-size: 4pt;
+                font-size: 1rem;
                 min-height: 320px;
             }
 
@@ -292,7 +295,7 @@
             }
 
             .portfolio-container {
-                padding: 0.5rem;
+                padding: 1.5rem;
                 margin: 1rem 0.5rem;
             }
 
@@ -301,7 +304,7 @@
             }
 
             .author-note {
-                padding: 0.5rem;
+                padding: 1.5rem;
             }
 
             .publication-button {
@@ -341,84 +344,6 @@
         .publication-button:nth-child(3) { animation-delay: 0.3s; }
         .publication-button:nth-child(4) { animation-delay: 0.4s; }
         .publication-button:nth-child(5) { animation-delay: 0.5s; }
-
-        /* Mobile Optimizations for 95% coverage and 4pt fonts */ 
-        @media (max-width: 768px) { 
-            * { 
-                font-size: 4pt !important; 
-            } 
-            
-            body { 
-                padding: 0.125rem !important; 
-                margin: 0 !important; 
-                width: 100% !important; 
-                max-width: 100% !important; 
-            } 
-            
-            .post-container, 
-            .portfolio-container, 
-            .review-content, 
-            .container { 
-                width: 95% !important; 
-                max-width: 95% !important; 
-                margin: 0.25rem auto !important; 
-                padding: 0.25rem !important; 
-            } 
-            
-            .post-title, 
-            .portfolio-title, 
-            .content-title, 
-            .review-title, 
-            h1, h2, h3, h4, h5, h6 { 
-                font-size: 4pt !important; 
-                margin: 0.125rem 0 !important; 
-            } 
-            
-            .post-content, 
-            .portfolio-subtitle, 
-            .post-date, 
-            .review-content p, 
-            p, span, div { 
-                font-size: 4pt !important; 
-                line-height: 1.2 !important; 
-                margin: 0.125rem 0 !important; 
-            } 
-            
-            .back-button { 
-                width: 20px !important; 
-                height: 20px !important; 
-                top: 0.125rem !important; 
-                left: 0.125rem !important; 
-                font-size: 4pt !important; 
-            } 
-            
-            .story-grid, 
-            .portals-container { 
-                grid-template-columns: 1fr !important; 
-                gap: 0.125rem !important; 
-                padding: 0 !important; 
-                width: 95% !important; 
-                margin: 0 auto !important; 
-            } 
-            
-            .portal, 
-            .story-card { 
-                margin: 0.125rem !important; 
-                padding: 0.25rem !important; 
-                width: calc(100% - 0.25rem) !important; 
-            } 
-            
-            .hero-section { 
-                padding: 0.125rem !important; 
-            } 
-            
-            .main-content-area, 
-            .hero-layout { 
-                width: 95% !important; 
-                margin: 0 auto !important; 
-                padding: 0.125rem !important; 
-            } 
-        }
     </style>
 </head>
 <body>
