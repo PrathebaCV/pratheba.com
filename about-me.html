@@ -18,8 +18,7 @@
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             color: #ffffff;
             line-height: 1.8;
-            padding: 0.25rem;
-            font-size: 4pt;
+            padding: 2rem;
         }
 
         .back-button {
@@ -48,32 +47,32 @@
         }
 
         .post-container {
-            max-width: 95%;
-            width: 95%;
-            margin: 1rem auto;
-            padding: 0.25rem 0;
+            max-width: 80%;
+            width: 80%;
+            margin: 4rem auto;
+            padding: 2rem 0;
         }
 
         .post-title {
-            font-size: 4pt;
+            font-size: 2.5rem;
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
             color: #d4af37;
         }
 
         .post-date {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 4pt;
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
         }
 
         .post-content {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 4pt;
+            font-size: 1.1rem;
         }
 
         .post-content p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .author-image {
@@ -99,12 +98,12 @@
 
         .author-description {
             text-align: center;
-            font-size: 4pt;
+            font-size: 1.2rem;
             line-height: 2;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
             background: rgba(255, 255, 255, 0.05);
-            padding: 0.25rem;
+            padding: 2rem;
             border-radius: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -116,109 +115,26 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
+        @media (max-width: 768px) {
+            .author-image {
+                width: 150px;
+                height: 150px;
+            }
 
+            .author-description {
+                font-size: 1.1rem;
+                padding: 1.5rem;
+            }
             .post-container {
-                width: 95%;
-                margin: 0.5rem auto;
-                padding: 0.25rem;
+                padding: 2rem;
+                margin: 2rem 1rem;
+                max-width: 90%;
+                width: 90%;
             }
 
             .post-title {
-                font-size: 4pt;
+                font-size: 2rem;
             }
-
-            .post-content {
-                font-size: 4pt;
-            }
-
-            .post-date {
-                font-size: 4pt;
-            }
-
-            .back-button {
-                width: 25px;
-                height: 25px;
-                top: 0.25rem;
-                left: 0.25rem;
-            }
-        }
-
-        /* Mobile Optimizations for 95% coverage and 4pt fonts */ 
-        @media (max-width: 768px) { 
-            * { 
-                font-size: 4pt !important; 
-            } 
-            
-            body { 
-                padding: 0.125rem !important; 
-                margin: 0 !important; 
-                width: 100% !important; 
-                max-width: 100% !important; 
-            } 
-            
-            .post-container, 
-            .portfolio-container, 
-            .review-content, 
-            .container { 
-                width: 95% !important; 
-                max-width: 95% !important; 
-                margin: 0.25rem auto !important; 
-                padding: 0.25rem !important; 
-            } 
-            
-            .post-title, 
-            .portfolio-title, 
-            .content-title, 
-            .review-title, 
-            h1, h2, h3, h4, h5, h6 { 
-                font-size: 4pt !important; 
-                margin: 0.125rem 0 !important; 
-            } 
-            
-            .post-content, 
-            .portfolio-subtitle, 
-            .post-date, 
-            .review-content p, 
-            p, span, div { 
-                font-size: 4pt !important; 
-                line-height: 1.2 !important; 
-                margin: 0.125rem 0 !important; 
-            } 
-            
-            .back-button { 
-                width: 20px !important; 
-                height: 20px !important; 
-                top: 0.125rem !important; 
-                left: 0.125rem !important; 
-                font-size: 4pt !important; 
-            } 
-            
-            .story-grid, 
-            .portals-container { 
-                grid-template-columns: 1fr !important; 
-                gap: 0.125rem !important; 
-                padding: 0 !important; 
-                width: 95% !important; 
-                margin: 0 auto !important; 
-            } 
-            
-            .portal, 
-            .story-card { 
-                margin: 0.125rem !important; 
-                padding: 0.25rem !important; 
-                width: calc(100% - 0.25rem) !important; 
-            } 
-            
-            .hero-section { 
-                padding: 0.125rem !important; 
-            } 
-            
-            .main-content-area, 
-            .hero-layout { 
-                width: 95% !important; 
-                margin: 0 auto !important; 
-                padding: 0.125rem !important; 
-            } 
         }
     </style>
 </head>
