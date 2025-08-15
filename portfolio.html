@@ -50,10 +50,7 @@
         }
 
         .author-note {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 2.5rem;
+            padding: 2rem 0;
             margin-bottom: 3rem;
             text-align: center;
         }
@@ -243,7 +240,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            z-index: 1000;
+            z-index: 10002;
             opacity: 1;
             pointer-events: auto;
         }
@@ -350,7 +347,21 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-link">←</a>
+    <a href="index.html" class="back-link" onclick="
+        // Force close any open floating menu
+        if (window.floatingMenuInstance) {
+            window.floatingMenuInstance.closeMenu();
+        }
+        // Reset any body styles that might interfere
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.documentElement.style.overflow = '';
+        // Force immediate navigation
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 50);
+        return false;
+    ">←</a>
 
     <div class="portfolio-container">
         <header class="portfolio-header">
