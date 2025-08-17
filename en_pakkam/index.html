@@ -209,6 +209,31 @@
             white-space: nowrap;
         }
 
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
             .nav-toggle {
                 display: block;
@@ -288,10 +313,20 @@
             .post-date {
                 font-size: 0.8rem;
             }
+
+            .back-button {
+                top: 1rem;
+                left: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <a href="../index.html" class="back-button">←</a>
+    
     <header class="header">
         <div class="nav-container">
             <a href="../index.html" class="nav-brand">Pratheba.com</a>
